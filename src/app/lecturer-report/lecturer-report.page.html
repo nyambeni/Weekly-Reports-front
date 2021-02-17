@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Lecturer Weekly Report
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12" size-md="6" offset="3">
+            <form (ngSubmit)="logForm()">
+                <ion-item>
+                    <ion-label position="floating">Responsible Lecturer:</ion-label>
+                    <ion-input value="Dr Tendani Lavhengwa" readonly placeholder="Responsible Lecturer"></ion-input>
+
+                    <ion-label position="floating">Qualification:</ion-label>
+                    <ion-input value="Diploma: Informatics" readonly placeholder="Qualification"></ion-input>
+
+                    <ion-label position="floating">Module Name and Code:</ion-label>
+                    <ion-input value="BCM125D - Business Cost Management" readonly placeholder="Module Name and Code"></ion-input>
+                </ion-item><br>
+
+                <ion-item>
+                    <ion-label position="floating">Number of Students</ion-label>
+                    <ion-input type="number" required [(ngModel)]="report.numStudents" name="numStudents"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Week no. and Date</ion-label><br>
+                    <ion-input>
+                        <p>{{date | date:'yyyy/MM/dd' }}</p>
+                    </ion-input>
+                    <!-- <ion-input type="date" required [(ngModel)]="report.weekNo" name="weekNo"></ion-input>-->
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Topic(s) covered</ion-label>
+                    <ion-textarea type="text" [(ngModel)]="report.topicsCovered" name="topicsCovered"></ion-textarea>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Mode of Teaching Used</ion-label>
+                    <ion-input type="text" required [(ngModel)]="report.teachMode" name="teachMode"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Mode of Presentation</ion-label>
+                    <ion-input type="text" required [(ngModel)]="report.presentMode" name="presentMode"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Resources Used</ion-label>
+                    <ion-input required [(ngModel)]="report.resource" name="resource"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Avg Number of Students Present</ion-label>
+                    <ion-input required type="number" [(ngModel)]="report.attendAvg" name="attendAvg"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Activities</ion-label>
+                    <ion-textarea type="text" [(ngModel)]="report.activities" name="activities"></ion-textarea>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Assessments</ion-label>
+                    <ion-textarea type="text" [(ngModel)]="report.assess" name="assess"></ion-textarea>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Challenges and/or Recommendations</ion-label>
+                    <ion-textarea type="text" [(ngModel)]="report.challRecomm" name="challRecomm"></ion-textarea>
+                </ion-item>
+                <ion-button size="small" type="submit" block>Create Report</ion-button>
+                <ion-button size="small" (click)="this.router.navigateByUrl('/home')">Cancel</ion-button>
+
+                <!--<button ion-button full (click)="createPdf()">Create PDF</button>
+               <button ion-button full (click)="downloadPdf()" [disabled]="!pdfObj">Download PDF</button>-->
+            </form>
+
+        </ion-col>
+    </ion-row>
+</ion-content>
