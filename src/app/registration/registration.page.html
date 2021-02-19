@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content s>
+  
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">surname</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+  
+    <ion-item class="item-input item-select">
+      <div class="input-label">
+      
+      </div>
+      <select>
+        <option selected>Miss</option>
+        <option>Mr</option>
+        <option selected>Mrs</option>
+        <option>Dr</option>
+      </select>
+    </ion-item>
+    
+    
+    <ion-item class="item-input item-select">
+      <div class="input-label">
+      
+      </div>
+      <select>
+        <option selected>FOUNDATION</option>
+        <option>INFORMATICS</option>
+        
+        
+      </select>
+    </ion-item>
+    
+    
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col size ="12" size-md ="6" offset ="3" align-self-center>
+        <ion-button type="submit"  color="danger" expand="block">CREATE ACCOUNT</ion-button>
+        <a [routerLink]="['/registration']" class="small-text">CANCEL</a>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>
