@@ -7,60 +7,61 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content s>
+<ion-content style="text-align: center;" >
   
   <form>
     <ion-item lines="full">
-      <ion-label position="floating">Name</ion-label>
+      <ion-label class="center" position="floating">Name</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">surname</ion-label>
+      <ion-label class="center" position="floating">surname</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
   
     <ion-item class="item-input item-select">
-      <div class="input-label">
-      
+      <div class="input-label"   >
+        <select class="center">
+          <option selected>Miss</option>
+          <option>Mr</option>
+          <option selected>Mrs</option>
+          <option>Dr</option>
+        </select>
       </div>
-      <select>
-        <option selected>Miss</option>
-        <option>Mr</option>
-        <option selected>Mrs</option>
-        <option>Dr</option>
-      </select>
+      
     </ion-item>
     
     
-    <ion-item class="item-input item-select">
+    <ion-item class="item-input item-select" >
       <div class="input-label">
       
-      </div>
-      <select>
+   
+      <select class="center">
         <option selected>FOUNDATION</option>
         <option>INFORMATICS</option>
         
         
       </select>
+    </div>
     </ion-item>
     
     
     <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
+      <ion-label class="center"position="floating">Email</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
+      <ion-label class="center" position="floating">Password</ion-label>
       <ion-input type="password" required></ion-input>
     </ion-item>
 
     <ion-row>
-      <ion-col size ="12" size-md ="6" offset ="3" align-self-center>
+      <ion-col >
         <ion-button type="submit"  color="danger" expand="block">CREATE ACCOUNT</ion-button>
-        <a [routerLink]="['/registration']" class="small-text">CANCEL</a>
+        <a  [routerLink]="['/registration']" class="small-text">CANCEL</a>
       </ion-col>
     </ion-row>
   </form>

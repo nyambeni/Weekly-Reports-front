@@ -8,36 +8,38 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content style="text-align: center;">
   <form>
-    
-    <ion-item class="item-input item-select">
+
+    <ion-item class="item-input item-select" >
       <div class="input-label">
-      ROLE
-      </div>
-      <select>
+      
+   
+      <select >
         <option selected>HOD</option>
         <option>LECTURE</option>
         
         
       </select>
+    </div>
     </ion-item>
+    
     <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
+      <ion-label class="center" position="floating">Email</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
+      <ion-label class="center" position="floating">Password</ion-label>
       <ion-input type="password" required></ion-input>
     </ion-item>
 
     <ion-row>
-      <ion-col size ="12" size-md ="6" offset ="3" align-self-center>
+      <ion-col>
         <a [routerLink]="['/forgot-password']" class="small-text">Forgot Password?</a>
         <ion-button type="submit" color="danger" expand="block">Sign In</ion-button>
-        <a [routerLink]="['/registration']" class="small-text">CREATE ACCOUNT</a>
-        
+        <a [routerLink]="['/registration']" class="small-text" class="center">CREATE ACCOUNT</a>
+
       </ion-col>
     </ion-row>
   </form>

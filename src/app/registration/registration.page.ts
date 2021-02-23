@@ -5,11 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './registration.page.html',
   styleUrls: ['./registration.page.scss'],
 })
+
+
 export class RegistrationPage implements OnInit {
 
-  constructor() { }
+ 
+ constructor(){
+   
+ }
 
   ngOnInit() {
+     
   }
 
 }

@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'lecturer-report',
     loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
@@ -27,7 +28,7 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
-
+  
 ];
 
 @NgModule({
