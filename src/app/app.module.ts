@@ -9,13 +9,17 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+
 import { LectureService } from './lecture.service';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },LectureService],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },LectureService,
+                File, FileOpener],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
