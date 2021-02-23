@@ -1,3 +1,12 @@
+
+ion-content.background
+{
+
+  --background:url(../../assets/images/tut2.png) 00/100% 50% no-repeat;
+ 
+}
+
+
 #container {
   text-align: center;
 
@@ -24,4 +33,17 @@
 
 #container a {
   text-decoration: none;
+}
+
+.btn{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+ 
+
+ 
 }

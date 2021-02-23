@@ -1,0 +1,70 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Feb 22, 2021 at 10:59 AM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `report`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report`
+--
+
+CREATE TABLE `report` (
+  `reportID` int(10) NOT NULL,
+  `reportSubjectCode` varchar(20) NOT NULL,
+  `reportWeeklyTeaching` varchar(200) NOT NULL,
+  `reportWeeklyAssessment` varchar(100) NOT NULL,
+  `reportChallenges` varchar(400) NOT NULL,
+  `reportDocument` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `report`
+--
+
+INSERT INTO `report` (`reportID`, `reportSubjectCode`, `reportWeeklyTeaching`, `reportWeeklyAssessment`, `reportChallenges`, `reportDocument`) VALUES
+(1, 'ACS11AT', 'Explanations and topic examples, previous questions paper review , all recordings available on MyTutor', 'Class Test 1 done', 'Poor attendance – 16 out of 44 attended', '22_01_2021_ACS11AT.pdf\r\n'),
+(2, 'ASC11BT', 'Explanations and topic examples, previous questions paper review , all recordings available on MyTutor', 'Class test 1 done ', 'Poor attendance - 30 out 76 attended', 'ASC11BT.pdf'),
+(3, 'CMK10AT', 'Explanations; Illustrations; Topics examples', 'Computer-Based Test (web tests) done weekly ', 'No issues reported thus far ', 'CMK10AT_report.pdf'),
+(4, 'CMK10BT', 'Explanations; Illustrations; Topics examples', 'Computer-Based Test (web tests) done weekly', '\r\nConnection issues\r\nDistractions \r\nLack of in person interaction\r\nAdapting to unfamiliar techno', 'CMK10BT_report.pdf\r\n'),
+(5, 'BUA20AT', 'Explanations; Illustrations; Topics examples; Peer discussions', 'None  ', 'Poor attendance- 16 out of 24\r\nPlease confirm if MS Teams is zero-rated. The MS Teams as deployed on mytutor does not seem to its purpose. You can only schedule classes (meetings) but those invites do not reflect in the MS Teams app or calendar on the PC', 'BUA20AT_report.pdf');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `report`
+--
+ALTER TABLE `report`
+  ADD PRIMARY KEY (`reportID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `report`
+--
+ALTER TABLE `report`
+  MODIFY `reportID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

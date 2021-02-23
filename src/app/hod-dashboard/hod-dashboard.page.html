@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>hod-dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title class ="text-center"></ion-card-title>
+      <ion-avatar class="avatar">
+        <img src="../../assets/images/profile.jpg">
+      </ion-avatar>
+    </ion-card-header>
+  <ion-card-content>
+  <ion-text>
+    <h3 class="text-center">Refilwe Mogase</h3>
+    <h3 class="text-center">mogase@tut.ac.za</h3>
+    <h3 class="text-center">informaics</h3>
+  </ion-text>
+  </ion-card-content>
+  </ion-card>
+  <ion-card color="light">
+    <ion-card-header>
+      <ion-card-title class="text-center"></ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+  <ion-item-divider>
+    <h3>Modules</h3>
+  </ion-item-divider>
+  <ion-item [routerLink]="['/login']">ACS11AT</ion-item>
+  <ion-item [routerLink]="['/login']">ACS11BT</ion-item>
+  <ion-item [routerLink] ="['/login']">CMK10AT</ion-item>
+</ion-card-content>
+</ion-card>
+</ion-content>

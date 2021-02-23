@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
-
 const routes: Routes = [
   {
     path: 'home',
@@ -13,8 +12,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'lecturer-report',
-    loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
+    path: 'hod-report',
+    loadChildren: () => import('./hod-report/hod-report.module').then( m => m.HodReportPageModule)
+  },
+  {
+    path: 'hod-dashboard',
+    loadChildren: () => import('./hod-dashboard/hod-dashboard.module').then( m => m.HodDashboardPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  
+  {
+    path: 'hod-dashboard',
+    loadChildren: () => import('./hod-dashboard/hod-dashboard.module').then( m => m.HodDashboardPageModule)
+  },
+  {
+    path: 'hod-report',
+    loadChildren: () => import('./hod-report/hod-report.module').then( m => m.HodReportPageModule)
   },
 ];
 
