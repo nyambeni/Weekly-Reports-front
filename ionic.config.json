@@ -1,5 +1,7 @@
 {
   "name": "Weekly-Report",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

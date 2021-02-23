@@ -16,6 +16,14 @@ const routes: Routes = [
     path: 'lecturer-report',
     loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
   },
+  {
+    path: 'lecture-dashboard',
+    loadChildren: () => import('./lecture-dashboard/lecture-dashboard.module').then( m => m.LectureDashboardPageModule)
+  },
+  {
+    path: 'lecturer-report',
+    loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
+  },
 ];
 
 @NgModule({
