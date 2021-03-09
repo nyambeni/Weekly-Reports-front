@@ -23,7 +23,11 @@ const routes: Routes = [
   {
     path: 'lecturer-report',
     loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
+  },  {
+    path: 'reports',
+    loadChildren: () => import('./reports/reports.module').then( m => m.ReportsPageModule)
   },
+
 ];
 
 @NgModule({

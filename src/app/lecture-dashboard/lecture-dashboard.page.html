@@ -1,25 +1,47 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>lectureDashboard</ion-title>
+        <ion-title class="text-center">lectureDashboard</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+          </ion-buttons>
+          <ion-item>
+            <a href="#" class="view" [routerLink]="['/reports']">My Reports</a>
+          </ion-item>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-    <!--<ion-card>
-        <img src="img/nin-live.png" />
-        <ion-card-content>
-            <ion-card-title>
-                Nine Inch Nails Live
-            </ion-card-title>
-            <p>
-                The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
-            </p>
-        </ion-card-content>
-    </ion-card>-->
-
-    <ion-item>
-        <a href="/home">modules</a>
-    </ion-item>
-
-</ion-content>
+<ion-content color="light">
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class ="text-center"></ion-card-title>
+        <ion-avatar class="avatar">
+          <!--<img src="../../assets/images/profile.jpg">-->
+        </ion-avatar>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-text>
+      <h3 class="text-center">Refilwe Mogase</h3>
+      <h3 class="text-center">mogase@tut.ac.za</h3>
+      <h3 class="text-center">informaics</h3>
+    </ion-text>
+    </ion-card-content>
+    </ion-card>
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class="text-center"></ion-card-title>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-item-divider>
+      <h3>Modules</h3>
+    </ion-item-divider>
+    <ion-item >
+      <ul >
+          <ion-list *ngFor="let mod of modules">
+              <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjName}}({{mod.subjCode}})</ion-button>
+          </ion-list>
+      </ul>
+  </ion-item>
+  </ion-card-content>
+  </ion-card>
+  </ion-content>
+  

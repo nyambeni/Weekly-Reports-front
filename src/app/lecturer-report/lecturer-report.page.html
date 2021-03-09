@@ -3,6 +3,9 @@
         <ion-title>
             Lecturer Weekly Report
         </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
+          </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -10,7 +13,7 @@
 
     <ion-item>
         <ion-label>Lecture:</ion-label>
-        <ion-input [(ngModel)]="report.name" placeholder="Dr Tendani Lavhengwa"></ion-input>
+        <ion-input [(ngModel)]="report.name" >{{lecName}}</ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Module:</ion-label>

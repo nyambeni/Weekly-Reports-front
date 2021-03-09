@@ -22,12 +22,16 @@ export class LecturerReportPage implements OnInit {
   numStudents: number = 0
 
   constructor(public router: Router, private lectureService:LectureService, public navCtrl: NavController, private plt: Platform, private file: File, private fileOpener: FileOpener) {}
-
+  modules:any
+  lecName:''
+  lecSurname:''
+  lecSubId=''
+  
  report = {
-    lecSubId: 6,
-    name: 'Dr Tendani Lavhengwa',
-    module: 'BCM125D - Business Cost Management',
-    department: 'Informatics',
+    lecSubId: this.getModule(this.lecSubId),
+    name: '',
+    module: '',
+    department: '',
     group: '',
     numStudents: '',
     topicsCovered: '',
@@ -51,8 +55,23 @@ export class LecturerReportPage implements OnInit {
 
   pdfObj = null;
 
+
   ngOnInit() {
+    this.getModule(this)
+
   }
+
+  getModule(lecSubId) {
+    console.log('get',lecSubId)
+      this.lectureService.getSubject(lecSubId)
+      .subscribe(data => { this.modules = data
+        console.log(data)
+      //this.router.navigate[('/lecturer-report')]
+      this.router.navigateByUrl('/lecturer-report', data)
+    }, 
+        error=>{}
+      )
+    }
 
   logForm() {
 
