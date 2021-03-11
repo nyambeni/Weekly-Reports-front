@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { LectureService } from '../lecture.service';
 import { ReactiveFormsModule } from '@angular/forms'
 
@@ -11,13 +11,14 @@ import { ReactiveFormsModule } from '@angular/forms'
 export class LectureDashboardPage implements OnInit {
 
  
-  modules : any
+  modules:any;
   subjName = '';
   subjCode='';
-  lecName = ''
-  lecSubId = 0
+  lecName = '';
+  lecSubId = '';
 
-  constructor(private router: Router, private lectureService:LectureService) { }
+  constructor(private router: Router, 
+            private lectureService:LectureService) { }
 
   ngOnInit() {
     this.Display()
@@ -31,15 +32,45 @@ export class LectureDashboardPage implements OnInit {
   }
 
   getModule(lecSubId) {
-    console.log('get',lecSubId)
+
+    this.lectureService.getSubject(lecSubId)
+    .subscribe(data=>{
+      let myModules: NavigationExtras = {
+        state:{
+          modules: data
+        }
+      }
+      console.log(myModules)
+      this.router.navigate(['/lecturer-report'],myModules)
+    },
+      error=>{})
+ 
+    /*let forNav: NavigationExtras={
+      state:{
+        lecSubId: lecSubId
+      }
+    };
+    
+    console.log(forNav)
+  this.router.navigate(['/lecturer-report'],forNav)*/
+ // this.router.navigateByUrl('/lecturer-report', forNav)
+
+    /*console.log('get',lecSubId)
       this.lectureService.getSubject(lecSubId)
-      .subscribe(data => {  data = this.modules
-        console.log(data)
+      .subscribe(data => {  
+        let forNav: NavigationExtras={
+          queryParams:{
+            special: JSON.stringify(lecSubId)
+          }
+        };
+       // data = this.modules.lecSubId
+        
+        console.log(forNav)
       //this.router.navigate[('/lecturer-report')]
-      this.router.navigateByUrl('/lecturer-report', data)
+      this.router.navigateByUrl('/lecturer-report', forNav)
     }, 
         error=>{}
-      )
+      )*/
     }
 
 }

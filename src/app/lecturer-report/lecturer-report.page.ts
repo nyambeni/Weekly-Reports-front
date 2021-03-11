@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
 import { ToastController } from '@ionic/angular';
 
@@ -20,19 +20,40 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 export class LecturerReportPage implements OnInit {
 
   numStudents: number = 0
+  data: any
+  modules: any
+  lecSubId = ''
+  Myname = ''
+  constructor(public router: Router,
+    private lectureService: LectureService,
+    public navCtrl: NavController,
+    private plt: Platform,
+    private file: File,
+    private fileOpener: FileOpener,
+    private route: ActivatedRoute) {
 
-  constructor(public router: Router, private lectureService:LectureService, public navCtrl: NavController, private plt: Platform, private file: File, private fileOpener: FileOpener) {}
-  modules:any
-  lecName:''
-  lecSurname:''
-  lecSubId=''
-  
- report = {
-    lecSubId: this.getModule(this.lecSubId),
-    name: '',
+    this.route.queryParams.subscribe(params => {
+
+      if (this.router.getCurrentNavigation().extras.state) {
+
+        this.modules = this.router.getCurrentNavigation().extras.state.modules;
+
+        console.log(this.modules)
+        this.Myname = this.modules[0].title + " " + this.modules[0].lecSurname + " " + this.modules[0].lecName
+        console.log(this.Myname)
+        this.lecSubId = this.modules[0].lecSubId
+        console.log(this.lecSubId)
+
+      }
+    })
+
+  }
+
+
+  report = {
+    lecSubId: this.lecSubId,
     module: '',
     department: '',
-    group: '',
     numStudents: '',
     topicsCovered: '',
     teachMode: 'MyTUTor',
@@ -57,31 +78,23 @@ export class LecturerReportPage implements OnInit {
 
 
   ngOnInit() {
-    this.getModule(this)
-
   }
 
-  getModule(lecSubId) {
-    console.log('get',lecSubId)
-      this.lectureService.getSubject(lecSubId)
-      .subscribe(data => { this.modules = data
-        console.log(data)
-      //this.router.navigate[('/lecturer-report')]
-      this.router.navigateByUrl('/lecturer-report', data)
-    }, 
-        error=>{}
-      )
-    }
+
 
   logForm() {
 
-      this.lectureService.createReport(this.report)
-    .subscribe(data=>{this.myMessage = 'Report is set Successfully'},
-      error=>{this.myMessage = 'Failed to create Report, CODE: DP'})
+    console.log(this.report.lecSubId)
 
-    }
 
-      createPdf() {
+
+    /* this.lectureService.createReport(this.report)
+   .subscribe(data=>{this.myMessage = 'Report is set Successfully'},
+     error=>{this.myMessage = 'Failed to create Report, CODE: DP'})*/
+
+  }
+
+  createPdf() {
 
     var docDefinition = {
       content: [
@@ -89,16 +102,13 @@ export class LecturerReportPage implements OnInit {
         { text: new Date().toTimeString(), alignment: 'right' },
 
         { text: 'Name', style: 'subheader' },
-        this.report.name,
+        this.Myname,
 
         { text: 'Module', style: 'subheader' },
         this.report.module,
 
         { text: 'Department', style: 'subheader' },
         this.report.department,
-
-        { text: 'Group', style: 'subheader' },
-        this.report.group,
 
         { text: 'Number of Students:', style: 'subheader' },
         this.report.numStudents,
@@ -161,6 +171,6 @@ export class LecturerReportPage implements OnInit {
     }
   }
 
-  }
+}
 
 

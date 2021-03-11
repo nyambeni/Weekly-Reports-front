@@ -13,13 +13,17 @@ import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 import { LectureService } from './lecture.service';
+import { RegistrationService } from './registration.service';
+import { HodService } from './hod.service';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },LectureService,
-                File, FileOpener],
+    RegistrationService,File, FileOpener, HodService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

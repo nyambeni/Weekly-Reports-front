@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>HOD-Report</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-item size="small">
+      <ion-label size="2">Select week</ion-label>
+      <ion-select placeholder="choose Date">
+           <ion-select-option>18-22 january 2021</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="background">
+<ion-card *ngFor="let report of reports">
+  <ion-card-header>
+    <ion-card-title class="text-center">{{report.reportSubjectCode}}</ion-card-title>
+    <ion-card-subtitle class="text-center">{{report.reportWeeklyAssessment}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content color="dark" class="background">
+    <ion-item-divider color ="light">
+      <h3 class="text-center">Weekly Teachings</h3>
+    </ion-item-divider>
+    <ion-text>
+      <p>{{report.reportWeeklyTeaching}}</p>
+    </ion-text>
+    <ion-item-divider color="light">
+      <h3 class="text-center">Challenges</h3>
+    </ion-item-divider>
+    <ion-text>
+      <p>{{report.reportChallenges}}</p>
+    </ion-text>
+    <ion-item-divider color="light">
+      <ion-label size ="small"><a href="../../assets/documents/report.pdf" download><small>{{report.reportDocument}}</small></a></ion-label>
+    <ion-icon name="download" size="small"></ion-icon>
+    </ion-item-divider>
+  </ion-card-content>
+</ion-card>
+</ion-content>

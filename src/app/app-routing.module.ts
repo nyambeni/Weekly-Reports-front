@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: '',
+    path: 'home',
     redirectTo: 'home',
     pathMatch: 'full'
   },
@@ -23,10 +23,36 @@ const routes: Routes = [
   {
     path: 'lecturer-report',
     loadChildren: () => import('./lecturer-report/lecturer-report.module').then( m => m.LecturerReportPageModule)
-  },  {
+  },
+  {
     path: 'reports',
     loadChildren: () => import('./reports/reports.module').then( m => m.ReportsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'registration',
+    loadChildren: () => import('./registration/registration.module').then( m => m.RegistrationPageModule)
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },
+  {
+    path: 'hod-dashboard',
+    loadChildren: () => import('./hod-dashboard/hod-dashboard.module').then( m => m.HodDashboardPageModule)
+  },
+  {
+    path: 'hod-report',
+    loadChildren: () => import('./hod-report/hod-report.module').then( m => m.HodReportPageModule)
+  },
+  {
+    path: '',
+    loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
+  },
+
 
 ];
 
