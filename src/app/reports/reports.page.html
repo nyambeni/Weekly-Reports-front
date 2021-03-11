@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>reports</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+  <ion-card-content>
+    <ion-item-divider>
+      <h3>Modules</h3>
+    </ion-item-divider>
+    <ion-item [routerLink]="['/lecturer-report']">ACS11AT</ion-item>
+    <ion-item [routerLink]="['/lecturer-report']">ACS11BT</ion-item>
+    <ion-item [routerLink] ="['/lecturer-report']">CMK10AT</ion-item>
+  </ion-card-content>
+  </ion-card>
+</ion-content>
