@@ -41,7 +41,7 @@ const routes: Routes = [
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'hod-dashboard',
+    path: '',
     loadChildren: () => import('./hod-dashboard/hod-dashboard.module').then( m => m.HodDashboardPageModule)
   },
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
     loadChildren: () => import('./hod-report/hod-report.module').then( m => m.HodReportPageModule)
   },
   {
-    path: '',
+    path: 'landing',
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
   },
 
