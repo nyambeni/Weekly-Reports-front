@@ -9,7 +9,4 @@ import { Router } from '@angular/router';
 export class HomePage {
 
   constructor(public router: Router) {}
-
-  
-
 }

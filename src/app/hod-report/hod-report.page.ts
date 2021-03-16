@@ -14,7 +14,7 @@ export class HodReportPage implements OnInit {
 
   ngOnInit() {
     this.hodService.getReports().subscribe(data => {
-      
+
       console.log(data);
       console.log(this.reports);
       console.log(this.reports);

@@ -11,6 +11,20 @@ import { Router } from '@angular/router';
 })
 export class RegistrationPage implements OnInit {
 
+    select = {
+    title: '',
+    department: '',
+    email: '',
+    password: '',
+    name: '',
+    lastName: '',
+    terms: ''
+  };
+
+  logForm() {
+    console.log(this.select);
+  }
+  
   department:any
   modules:any
 
