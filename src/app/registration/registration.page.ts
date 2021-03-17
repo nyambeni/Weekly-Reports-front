@@ -11,18 +11,28 @@ import { Router } from '@angular/router';
 })
 export class RegistrationPage implements OnInit {
 
+  terms: ''
+
     select = {
     title: '',
-    department: '',
+    lecName:'',
+    lecSurname:'',
     email: '',
     password: '',
-    name: '',
-    lastName: '',
-    terms: ''
+    subjCode:[],
+    lecNum:''
   };
 
   logForm() {
     console.log(this.select);
+    this.register.registerLecture(this.select)
+    .subscribe(data =>{
+      data = this.select
+      console.log("===================================================")
+      console.log(data)
+    },
+      error=>{})
+
   }
   
   department:any
@@ -33,7 +43,6 @@ export class RegistrationPage implements OnInit {
 
   ngOnInit() {
     this.displayDepartment();
-    this.displayModules();
   }
 
   displayDepartment(){
@@ -47,17 +56,28 @@ export class RegistrationPage implements OnInit {
       console.log(this.department)
     })
   }
-module:''
 
-
-  displayModules(){
-    this.register.getModules(this.department.subjCode)
+  onDropdownChange(deptCode){
+    console.log(deptCode)
+    this.register.getModules(deptCode)
     .subscribe(data =>{
-      this.modules = data
-      console.log(this.modules)
+      console.log(data)
+      this.selectModules(data)
+      this.modules = data;
 
     },
-    error=>{})
+      error=>{
+        console.log('modules cannot get modules')
+      })
   }
+
+  selectModules(ev){
+
+    for(var k =0; k <ev.length; k++){
+      console.log(ev[k])
+      this.select.subjCode[k] = ev[k]
+    }
+  }
+
 
 }
