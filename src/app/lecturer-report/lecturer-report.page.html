@@ -5,7 +5,7 @@
         </ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
-          </ion-buttons>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -13,17 +13,17 @@
 
     <ion-item>
         <ion-label>Lecture:</ion-label>
-        <ion-input [(ngModel)]="report.name" value="report.name" >{{modules[0].title}} {{modules[0].lecSurname}} {{modules[0].lecName}}</ion-input>
+        <ion-input [(ngModel)]="Myname" value="Myname">{{modules[0].title}} {{modules[0].lecSurname}} {{modules[0].lecName}}</ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Module:</ion-label>
-        <ion-input [(ngModel)]="report.module">{{modules[0].subjCode}} {{modules[0].subjName}}</ion-input>
+        <ion-input [(ngModel)]="module">{{modules[0].subjCode}} {{modules[0].subjName}}</ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Department:</ion-label>
-        <ion-input [(ngModel)]="report.department">{{modules[0].deptName}}</ion-input>
+        <ion-input [(ngModel)]="department">{{modules[0].deptName}}</ion-input>
     </ion-item>
-    
+
     <ion-item>
         <ion-label>Week start:</ion-label>
         <ion-input readonly>{{date| date:"yyyy/MM/dd"}}</ion-input><br>
@@ -47,59 +47,33 @@
         <ion-label position="floating">Topic(s) covered</ion-label>
         <ion-textarea type="text" [(ngModel)]="report.topicsCovered" name="topicsCovered"></ion-textarea>
     </ion-item>
-    <ion-list>
-
+    <ion-item>
         <ion-label position="floating">Mode of Teaching Used</ion-label>
-
-        <ion-label class="label">MyTUTor</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode" name=name id=id type=checkbox checked><br>
-
-        <ion-label class="label">MS Teams</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode1" name=name id=id type=checkbox checked=""><br>
-
-        <ion-label class="label">SMS</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode2" name=name id=id type=checkbox checked="yes"><br>
-
-        <ion-label class="label">EC</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode3" name=name id=id type=checkbox checked="blue"><br>
-
-        <ion-label class="label">WhatsApp</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode4" name=name id=id type=checkbox checked="false"><br>
-
-        <ion-label class="label">Paper</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode5" name=name id=id type=checkbox checked="false"><br>
-
-        <ion-label class="label">Contact</ion-label>
-        <input class="input" [(ngModel)]="report.teachMode6" name=name id=id type=checkbox checked="false"><br>
-    </ion-list>
-    <ion-item>
-        <ion-label position="floating">Mode of Presentation</ion-label>
-        <ion-input type="text" [(ngModel)]="report.presentMode" name="presentMode"></ion-input>
+        <ion-textarea [(ngModel)]="report.teachMode" name="report.teachMode" id=id type="text"></ion-textarea><br>
     </ion-item>
     <ion-item>
-        <ion-label position="floating">Resources Used</ion-label>
-        <ion-input [(ngModel)]="report.resource" name="resource"></ion-input>
+        <ion-label position="floating ">Mode of Presentation</ion-label>
+        <ion-input type="text " [(ngModel)]="report.presentMode " name="presentMode "></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating ">Resources Used</ion-label>
+        <ion-input [(ngModel)]="report.resource " name="resource "></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating">Activities</ion-label>
-        <ion-textarea type="text" [(ngModel)]="report.activities" name="activities"></ion-textarea>
+        <ion-label position="floating ">Activities</ion-label>
+        <ion-textarea type="text " [(ngModel)]="report.activities " name="activities "></ion-textarea>
     </ion-item>
     <ion-item>
-        <ion-label position="floating">Assessments</ion-label>
-        <ion-textarea type="text" [(ngModel)]="report.assess" name="assess"></ion-textarea>
+        <ion-label position="floating ">Assessments</ion-label>
+        <ion-textarea type="text " [(ngModel)]="report.assess " name="assess "></ion-textarea>
     </ion-item>
     <ion-item>
-        <ion-label position="floating">Challenge/Recommendations</ion-label>
-        <ion-textarea type="text" [(ngModel)]="report.challRecomm" name="challRecomm"></ion-textarea>
+        <ion-label position="floating ">Challenge/Recommendations</ion-label>
+        <ion-textarea type="text " [(ngModel)]="report.challRecomm " name="challRecomm "></ion-textarea>
     </ion-item>
 
-    <ion-button size="small" color="danger" (click)="logForm()" block>Create Report</ion-button>
-    <ion-button size="small" color="danger" (click)="this.router.navigateByUrl('/home')">Cancel</ion-button>
-
-    <ion-item>
-        <button ion-button full (click)="createPdf()">Create PDF</button>
-        <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</button>
-    </ion-item>
+    <ion-button size="small " (click)="createPdf()" block>Create Report</ion-button>
+    <ion-button size="small " (click)="this.router.navigateByUrl( '/login')">Cancel</ion-button>
 
 </ion-content>

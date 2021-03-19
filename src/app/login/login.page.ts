@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -8,20 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-fLogin: {
-  role:'',
-  email: '',
-  password: ''
-}
+  select = {
+    role: '',
+    email: '',
+    password: ''
+  };
 
-
-  constructor() { }
+  logForm() {
+    console.log(this.select);
+    if (this.select.role === 'HOD'){
+      this.navCtrl.navigateForward('/hod-dashboard');
+    } else {
+      this.navCtrl.navigateForward('/lecture-dashboard');
+    }
+  }
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
   }
-
-  login(){
-    console.log(this.fLogin.role)
-  }
-
 }

@@ -7,8 +7,8 @@ import { ToastController } from '@ionic/angular';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
 
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -19,18 +19,20 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class LecturerReportPage implements OnInit {
 
-  numStudents: number = 0
-  data: any
-  modules: any
-  lecSubId = ''
-  Myname = ''
+  numStudents = 0;
+  data: any;
+  modules: any;
+  lecSubId = '';
+  Myname = '';
+  module = '';
+  department = '';
   constructor(public router: Router,
-    private lectureService: LectureService,
-    public navCtrl: NavController,
-    private plt: Platform,
-    private file: File,
-    private fileOpener: FileOpener,
-    private route: ActivatedRoute) {
+              private lectureService: LectureService,
+              public navCtrl: NavController,
+              private plt: Platform,
+              private file: File,
+              private fileOpener: FileOpener,
+              private route: ActivatedRoute) {
 
     this.route.queryParams.subscribe(params => {
 
@@ -38,41 +40,35 @@ export class LecturerReportPage implements OnInit {
 
         this.modules = this.router.getCurrentNavigation().extras.state.modules;
 
-        console.log(this.modules)
-        this.Myname = this.modules[0].title + " " + this.modules[0].lecSurname + " " + this.modules[0].lecName
-        console.log(this.Myname)
-        this.lecSubId = this.modules[0].lecSubId
-        console.log(this.lecSubId)
+        console.log(this.modules);
+        this.Myname = this.modules[0].title + ' ' + this.modules[0].lecSurname + ' ' + this.modules[0].lecName;
+        console.log(this.Myname);
+        this.lecSubId = this.modules[0].lecSubId;
+        console.log(this.lecSubId);
+        this.module = this.modules[0].subjName;
+        this.department = this.modules[0].deptName;
 
       }
-    })
+    });
 
   }
 
 
   report = {
-    lecSubId: this.lecSubId,
-    module: '',
-    department: '',
+    lecSubId: 0,
     numStudents: '',
     topicsCovered: '',
-    teachMode: 'MyTUTor',
-    teachMode1: 'MS Teams',
-    teachMode2: 'SMS',
-    teachMode3: 'EC',
-    teachMode4: 'WhatsApp',
-    teachMode5: 'Paper',
-    teachMode6: 'Contact',
+    teachMode: '',
     presentMode: '',
     resource: '',
     attendAvg: '',
     activities: '',
     assess: '',
     challRecomm: ''
-  }
+  };
 
   date = Date();
-  myMessage = ""
+  myMessage = '';
 
   pdfObj = null;
 
@@ -80,23 +76,9 @@ export class LecturerReportPage implements OnInit {
   ngOnInit() {
   }
 
-
-
-  logForm() {
-
-    console.log(this.report.lecSubId)
-
-
-
-    /* this.lectureService.createReport(this.report)
-   .subscribe(data=>{this.myMessage = 'Report is set Successfully'},
-     error=>{this.myMessage = 'Failed to create Report, CODE: DP'})*/
-
-  }
-
   createPdf() {
 
-    var docDefinition = {
+    const docDefinition = {
       content: [
         { text: 'Lecturer report', style: 'header' },
         { text: new Date().toTimeString(), alignment: 'right' },
@@ -105,10 +87,10 @@ export class LecturerReportPage implements OnInit {
         this.Myname,
 
         { text: 'Module', style: 'subheader' },
-        this.report.module,
+        this.module,
 
         { text: 'Department', style: 'subheader' },
-        this.report.department,
+        this.department,
 
         { text: 'Number of Students:', style: 'subheader' },
         this.report.numStudents,
@@ -121,12 +103,6 @@ export class LecturerReportPage implements OnInit {
 
         { text: 'Mode of Teaching Used', style: 'subheader' },
         this.report.teachMode,
-        this.report.teachMode1,
-        this.report.teachMode2,
-        this.report.teachMode3,
-        this.report.teachMode4,
-        this.report.teachMode5,
-        this.report.teachMode6,
 
         { text: 'Mode of Presentation', style: 'subheader' },
         this.report.presentMode,
@@ -159,8 +135,15 @@ export class LecturerReportPage implements OnInit {
           width: '50%'
         }
       }
-    }
+    };
     this.pdfObj = pdfMake.createPdf(docDefinition);
+
+    this.report.lecSubId = Number(this.lecSubId);
+
+    console.log(this.report);
+    this.lectureService.createReport(this.report)
+   .subscribe(data => {this.myMessage = 'Report is set Successfully'; },
+     error => {this.myMessage = 'Failed to create Report, CODE: DP'; });
   }
 
   downloadPdf() {
@@ -172,5 +155,3 @@ export class LecturerReportPage implements OnInit {
   }
 
 }
-
-

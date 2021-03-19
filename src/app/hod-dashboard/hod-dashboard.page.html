@@ -1,4 +1,5 @@
 <ion-header>
+<<<<<<< HEAD
   <ion-toolbar>
     <ion-title>hod-dashboard</ion-title>
     <ion-buttons slot="start">
@@ -37,3 +38,43 @@
 </ion-card-content>
 </ion-card>
 </ion-content>
+=======
+    <ion-toolbar>
+      <ion-title>hod-dashboard</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content color="light">
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class ="text-center"></ion-card-title>
+        <ion-avatar class="avatar">
+          <img src="../../assets/images/profile.jpg">
+        </ion-avatar>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-text>
+      <h3 class="text-center">Refilwe Mogase</h3>
+      <h3 class="text-center">mogase@tut.ac.za</h3>
+      <h3 class="text-center">informaics</h3>
+    </ion-text>
+    </ion-card-content>
+    </ion-card>
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class="text-center"></ion-card-title>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-item-divider>
+      <h3>Modules</h3>
+    </ion-item-divider>
+    <ion-item [routerLink]="['/hod-report']">ACS11AT</ion-item>
+    <ion-item [routerLink]="['/lecturer-report']">ACS11BT</ion-item>
+    <ion-item [routerLink] ="['/lecturer-report']">CMK10AT</ion-item>
+  </ion-card-content>
+  </ion-card>
+  </ion-content>
+>>>>>>> 4e0a0e1bdb38c60466ba6cd5cd5949922ec3497f
