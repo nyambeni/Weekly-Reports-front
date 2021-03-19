@@ -49,7 +49,15 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating">Mode of Teaching Used</ion-label>
-        <ion-textarea [(ngModel)]="report.teachMode" name="report.teachMode" id=id type="text"></ion-textarea><br>
+        <ion-select #newSelect [(ngModel)]="report.teachMode" name="teachMode" multiple="true" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+            <ion-select-option value="MyTUTor">MyTUTor</ion-select-option>
+            <ion-select-option value="MS Teams">MS Teams</ion-select-option>
+            <ion-select-option value="SMS">SMS</ion-select-option>
+            <ion-select-option value="EC">EC</ion-select-option>
+            <ion-select-option value="WhatsApp">WhatsApp</ion-select-option>
+            <ion-select-option value="Paper">Paper</ion-select-option>
+            <ion-select-option value="Contact">Contact</ion-select-option>
+        </ion-select>
     </ion-item>
     <ion-item>
         <ion-label position="floating ">Mode of Presentation</ion-label>

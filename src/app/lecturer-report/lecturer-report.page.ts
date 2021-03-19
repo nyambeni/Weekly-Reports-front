@@ -3,6 +3,7 @@ import { NavController, Platform } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
 import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -32,7 +33,9 @@ export class LecturerReportPage implements OnInit {
               private plt: Platform,
               private file: File,
               private fileOpener: FileOpener,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              public alertController: AlertController,
+              public toastController: ToastController) {
 
     this.route.queryParams.subscribe(params => {
 
@@ -140,10 +143,10 @@ export class LecturerReportPage implements OnInit {
 
     this.report.lecSubId = Number(this.lecSubId);
 
-    console.log(this.report);
     this.lectureService.createReport(this.report)
    .subscribe(data => {this.myMessage = 'Report is set Successfully'; },
      error => {this.myMessage = 'Failed to create Report, CODE: DP'; });
+     this.showPrompt();
   }
 
   downloadPdf() {
@@ -153,5 +156,43 @@ export class LecturerReportPage implements OnInit {
       this.pdfObj.download();
     }
   }
+
+  showPrompt() {
+    this.alertController.create({
+      header: 'Confirm',
+      subHeader: 'Are you sure you want to create this report?',
+      buttons: [
+        {
+          text: 'No',
+          handler: (data: any) => {
+            console.log('Canceled', data);
+          }
+        },
+        {
+          text: 'Yes',
+          handler: (data: any) => {
+            console.log('Saved Information', data);
+            this.displayToast();
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
+    });
+    console.log(this.report);
+  }
+
+  displayToast() {
+    this.toastController.create({
+      message: 'Report created successfully!',
+      position: 'top',
+      cssClass: 'toast-custom-class',
+      duration: 2000
+    }).then((toast) => {
+      toast.present();
+      this.navCtrl.navigateBack('/reports')
+    });
+  } 
+
 
 }

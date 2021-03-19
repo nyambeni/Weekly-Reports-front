@@ -13,9 +13,11 @@
     <ion-item-divider>
       <h3>Modules</h3>
     </ion-item-divider>
-    <ion-item [routerLink]="['/lecturer-report']">ACS11AT</ion-item>
-    <ion-item [routerLink]="['/lecturer-report']">ACS11BT</ion-item>
-    <ion-item [routerLink] ="['/lecturer-report']">CMK10AT</ion-item>
+    <ul >
+      <ion-list *ngFor="let mod of modules">
+          <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjCode}}</ion-button>
+      </ion-list>
+  </ul>
   </ion-card-content>
   </ion-card>
 </ion-content>

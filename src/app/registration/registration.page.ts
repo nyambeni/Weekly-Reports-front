@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../registration.service';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -30,6 +32,8 @@ export class RegistrationPage implements OnInit {
       data = this.select
       console.log("===================================================")
       console.log(data)
+      
+      this.displayToast();
     },
       error=>{})
 
@@ -39,7 +43,9 @@ export class RegistrationPage implements OnInit {
   modules:any
 
   constructor(private register:RegistrationService,
-              private router:Router) {}
+              private router:Router,
+              public navCtrl: NavController,
+              public toastController: ToastController) {}
 
   ngOnInit() {
     this.displayDepartment();
@@ -78,6 +84,17 @@ export class RegistrationPage implements OnInit {
       this.select.subjCode[k] = ev[k]
     }
   }
-
+ 
+  displayToast() {
+    this.toastController.create({
+      message: 'Account created successfully!',
+      position: 'top',
+      cssClass: 'toast-custom-class',
+      duration: 2000
+    }).then((toast) => {
+      toast.present();
+      this.navCtrl.navigateBack('/login')
+    });
+  }
 
 }
