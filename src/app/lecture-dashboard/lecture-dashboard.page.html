@@ -2,46 +2,45 @@
     <ion-toolbar>
         <ion-title class="text-center">lectureDashboard</ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref="home"></ion-back-button>
-          </ion-buttons>
-          <ion-item>
+            <ion-back-button defaultHref="login"></ion-back-button>
+        </ion-buttons>
+        <ion-item>
             <a href="#" class="view" [routerLink]="['/reports']">My Reports</a>
-          </ion-item>
+        </ion-item>
     </ion-toolbar>
 </ion-header>
 
 <ion-content color="light">
     <ion-card color="light">
-      <ion-card-header>
-        <ion-card-title class ="text-center"></ion-card-title>
-        <ion-avatar class="avatar">
-          <!--<img src="../../assets/images/profile.jpg">-->
-        </ion-avatar>
-      </ion-card-header>
-    <ion-card-content>
-    <ion-text>
-      <h3 class="text-center">Refilwe Mogase</h3>
-      <h3 class="text-center">mogase@tut.ac.za</h3>
-      <h3 class="text-center">informaics</h3>
-    </ion-text>
-    </ion-card-content>
+        <ion-card-header>
+            <ion-card-title class="text-center"></ion-card-title>
+            <ion-avatar class="avatar">
+                <img src="../../assets/images/profile.jpg">
+            </ion-avatar>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-text>
+                <h3 class="text-center">Refilwe Mogase</h3>
+                <h3 class="text-center">mogase@tut.ac.za</h3>
+                <h3 class="text-center">informaics</h3>
+            </ion-text>
+        </ion-card-content>
     </ion-card>
     <ion-card color="light">
-      <ion-card-header>
-        <ion-card-title class="text-center"></ion-card-title>
-      </ion-card-header>
-    <ion-card-content>
-    <ion-item-divider>
-      <h3>Modules</h3>
-    </ion-item-divider>
-    <ion-item >
-      <ul >
-          <ion-list *ngFor="let mod of modules">
-              <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjCode}}</ion-button>
-          </ion-list>
-      </ul>
-  </ion-item>
-  </ion-card-content>
-  </ion-card>
-  </ion-content>
-  
+        <ion-card-header>
+            <ion-card-title class="text-center"></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item-divider>
+                <h3>Modules</h3>
+            </ion-item-divider>
+            <ion-item>
+                <ul>
+                    <ion-list *ngFor="let mod of modules">
+                        <ion-button (click)="getModule(mod.lecSubId)">{{mod.subjCode}}</ion-button>
+                    </ion-list>
+                </ul>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

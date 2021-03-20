@@ -47,8 +47,8 @@ export class LoginPage implements OnInit {
       this.log.hodLogin(this.hod)
       .subscribe(data => {
         console.log(data)
-      this.navCtrl.navigateForward('/hod-dashboard');
       });
+      this.navCtrl.navigateForward('/hod-dashboard');
 
     } else if(this.role == 'LECTURER') {
       this.lecture.email = this.select.email
