@@ -1,23 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>reports</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>reports</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card>
-  <ion-card-content>
-    <ion-item-divider>
-      <h3>Modules</h3>
-    </ion-item-divider>
-    <ul >
-      <ion-list *ngFor="let mod of modules">
-          <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjCode}}</ion-button>
-      </ion-list>
-  </ul>
-  </ion-card-content>
-  </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <ion-item-divider>
+                <h3>Modules</h3>
+            </ion-item-divider>
+
+            <ion-item *ngFor="let mod of modules">{{mod.subjCode}}</ion-item>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

@@ -14,7 +14,7 @@
 
             <ion-item>
                 <ion-label position="floating ">Role</ion-label>
-                <ion-select #newSelect [(ngModel)]="select.role" name="select.role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+                <ion-select #newSelect [(ngModel)]="role" name="role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
                     <ion-select-option value="HOD" checked="true">HOD</ion-select-option>
                     <ion-select-option value="LECTURER">Lecturer</ion-select-option>
                 </ion-select>
@@ -22,7 +22,7 @@
 
             <ion-item>
                 <ion-label position="floating ">Username</ion-label>
-                <ion-input type="email" [(ngModel)]="select.email" name="select.email"></ion-input>
+                <ion-input type="tel" [(ngModel)]="select.staffNo" name="select.staffNo"></ion-input>
             </ion-item>
 
             <ion-item>
