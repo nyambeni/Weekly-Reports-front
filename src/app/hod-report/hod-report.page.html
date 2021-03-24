@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button>
+      <ion-back-button></ion-back-button>
+    </ion-button>
+    <ion-title>hod-Report</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    
+    <ion-item lines ="full">
+        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2021"  placeholder="Select Week"></ion-datetime>
+    </ion-item>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="background">
+<ion-card *ngFor="let h of hod">
+  <ion-card-header>
+    <ion-card-title class="text-center">{{h.subjCode}}</ion-card-title>
+    <ion-card-subtitle class="text-center">{{h.assess}}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content color="dark" class="background">
+    <ion-item-divider color ="light">
+      <h3 class="text-center">Weekly Teachings</h3>
+    </ion-item-divider>
+    <ion-text>
+      <p>{{h.activities}}</p>
+    </ion-text>
+    <ion-item-divider color="light">
+      <h3 class="text-center">Challenges</h3>
+    </ion-item-divider>
+    <ion-text>
+      <p>{{h.challRecomm}}</p>
+    </ion-text>
+    <ion-item-divider color="light">
+      <ion-label size ="small"><a href="../../assets/documents/report.pdf" download><small>{{h.reportDocument}}</small></a></ion-label>
+    <ion-icon name="download" size="small"></ion-icon>
+    </ion-item-divider>
+  </ion-card-content>
+</ion-card>
+
+<ion-button (click)="download()" >PDF</ion-button>
+<ion-button (click)="create()" >create</ion-button>
+
+</ion-content>

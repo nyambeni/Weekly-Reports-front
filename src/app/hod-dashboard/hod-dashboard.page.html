@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>hod-dashboard</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="login"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+<<<<<<< HEAD
+</ion-header>
+
+
+<ion-content color="light">
+=======
+  </ion-header>
+  
+  <ion-content color="light">
+>>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class ="text-center"></ion-card-title>
+        <ion-avatar class="avatar">
+          <img src="../../assets/images/profile.jpg">
+        </ion-avatar>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-text>
+<<<<<<< HEAD
+      <h3 class="text-center" >{{hodName}}</h3>
+      <h3 class="text-center">{{email}}</h3>
+      <h3 class="text-center">{{deptName}}</h3>
+=======
+      <h3 class="text-center">Refilwe Mogase</h3>
+      <h3 class="text-center">mogase@tut.ac.za</h3>
+      <h3 class="text-center">informaics</h3>
+>>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+    </ion-text>
+    </ion-card-content>
+    </ion-card>
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-card-title class="text-center"></ion-card-title>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-item-divider>
+      <h3>Modules</h3>
+    </ion-item-divider>
+<<<<<<< HEAD
+    <ion-item >
+      <ul >
+        <ion-item *ngFor="let dash of dashboard" [routerLink]="['/hod-report']">{{dash.subjCode}}</ion-item>
+        
+      </ul>
+  </ion-item>
+  <div class="ion-padding">
+    <ion-button size="small" color="primary" (click)= "summary()"  expand="block">Summary</ion-button>
+    <ion-button size="small" color="primary" [routerLink]="['/landing']" expand="block" shape="round" fill="clear">logout</ion-button>
+  </div>
+  </ion-card-content>
+  </ion-card>
+  
+  </ion-content>
+  
+=======
+    <ion-item [routerLink]="['/hod-report']">ACS11AT</ion-item>
+    <ion-item [routerLink]="['/lecturer-report']">ACS11BT</ion-item>
+    <ion-item [routerLink] ="['/lecturer-report']">CMK10AT</ion-item>
+  </ion-card-content>
+  </ion-card>
+  </ion-content>
+>>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
