@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, NavController, Platform } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
-import { ToastController, AlertController, ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -34,9 +35,7 @@ export class LecturerReportPage implements OnInit {
               private fileOpener: FileOpener,
               private route: ActivatedRoute,
               public alertController: AlertController,
-              public toastController: ToastController,
-              private modalCtrl: ModalController,
-              public loadingController: LoadingController) {
+              public toastController: ToastController) {
 
     this.route.queryParams.subscribe(params => {
 
@@ -58,7 +57,6 @@ export class LecturerReportPage implements OnInit {
   }
 
 
-  teachModes = []
   report = {
     lecSubId: 0,
     numStudents: '',
@@ -69,7 +67,7 @@ export class LecturerReportPage implements OnInit {
     attendAvg: '',
     activities: '',
     assess: '',
-    challRecomm: '',
+    challRecomm: ''
   };
 
   date = Date();
@@ -144,15 +142,11 @@ export class LecturerReportPage implements OnInit {
     this.pdfObj = pdfMake.createPdf(docDefinition);
 
     this.report.lecSubId = Number(this.lecSubId);
-    for(var k =0; k < this.teachModes.length; k++){
-      this.report.teachMode = (this.teachModes[k] +"\n" +this.report.teachMode ).trim()
-    }
-  
 
-    console.log(this.report);
     this.lectureService.createReport(this.report)
    .subscribe(data => {this.myMessage = 'Report is set Successfully'; },
      error => {this.myMessage = 'Failed to create Report, CODE: DP'; });
+     this.showPrompt();
   }
 
   downloadPdf() {
@@ -177,7 +171,6 @@ export class LecturerReportPage implements OnInit {
         {
           text: 'Yes',
           handler: (data: any) => {
-            this.createPdf();
             console.log('Saved Information', data);
             this.displayToast();
           }
@@ -199,7 +192,7 @@ export class LecturerReportPage implements OnInit {
       toast.present();
       this.navCtrl.navigateBack('/reports')
     });
-  }
-  
-}
+  } 
 
+
+}

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HodService } from '../hod.service';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { LecturerReportPage  } from '../lecturer-report/lecturer-report.page';
+
 import { Report } from '../report';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { File } from '@ionic-native/file/ngx';
@@ -10,7 +13,6 @@ import { Platform } from '@ionic/angular';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-
 @Component({
   selector: 'app-hod-report',
   templateUrl: './hod-report.page.html',
@@ -18,39 +20,54 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class HodReportPage implements OnInit {
 
-  hod : any
-  activities=''
-  assess=''
-  challRecomm=''
-  subjCode =''
-
+  hod: any
+  activities = ' '
+  assess = ' '
+  challRecomm = ' '
+  subjCode = ' '
+  temp:any
+  deptId
   reports: Report[] = [];
-  pdfObj: any;
 <<<<<<< HEAD
-  plt: any;
-  constructor(private hodService: HodService) { }
+  constructor(private hodService: HodService, private router: Router, private route: ActivatedRoute, private lecRPort: LecturerReportPage) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.deptId = this.router.getCurrentNavigation().extras.state.mySummary;
+        console.log(this.deptId)
 
-  ngOnInit() {
-    this.getLectureReport()
+      }
+    })
   }
 
-  getLectureReport(){
-    this.hodService.getReports()
-    .subscribe(data => { this.hod = data},
-      error=>{})
+  create() {
+    this.lecRPort.createPdf();
+  }
+
+  download() {
+    this.lecRPort.downloadPdf();
+  }
 =======
+  pdfObj: any;
   constructor(private hodService: HodService, private file: File, private plt: Platform,
     private fileOpener: FileOpener,) { }
+>>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
 
   ngOnInit() {
-    this.hodService.getReports().subscribe(data => {
+    this.displaySummary()
+  }
 
+  displaySummary() {
+  
+    this.hodService.getReports(this.deptId).subscribe(data => {
+      this.hod = data
       console.log(data);
-      console.log(this.reports);
-      console.log(this.reports);
+      console.log(this.hod);
     }, error => console.log(error));
->>>>>>> 4e0a0e1bdb38c60466ba6cd5cd5949922ec3497f
+    
   }
+<<<<<<< HEAD
+  
+=======
   downloadPdf() {
     if (this.plt.is('cordova')) {
 
@@ -60,11 +77,5 @@ export class HodReportPage implements OnInit {
   }
 
 
-  downloadPdf() {
-    if (this.plt.is('cordova')) {
-
-    } else {
-      this.pdfObj.download();
-    }
-  }
+>>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
 }

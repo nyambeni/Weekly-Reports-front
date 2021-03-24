@@ -1,67 +1,50 @@
 <ion-header>
     <ion-toolbar>
-        <div *ngIf="contentLoaded">
-            <ion-title class="text-center">Dashboard</ion-title>
-            <ion-buttons slot="start">
-                <ion-back-button defaultHref="landing"></ion-back-button>
-            </ion-buttons>
-            <ion-item>
-                <a [routerLink]="['/reports']" class="view" (click)="reports()">My Reports</a>
-            </ion-item>
-
-        </div>
-        <div *ngIf="!contentLoaded">
-            <ion-skeleton-text animated></ion-skeleton-text>
-        </div>
+        <ion-title class="text-center">lectureDashboard</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="home"></ion-back-button>
+          </ion-buttons>
+          <ion-item>
+            <a href="#" class="view" [routerLink]="['/reports']">My Reports</a>
+          </ion-item>
+          <ion-item>
+            <button class="view" (click)="reports()">My Reports 2</button>
+          </ion-item>
     </ion-toolbar>
 </ion-header>
 
 <ion-content color="light">
     <ion-card color="light">
-        <ion-card-header>
-            <ion-card-title class="text-center"></ion-card-title>
-            <ion-avatar class="avatar">
-                <img src="../../assets/images/profile.jpg">
-            </ion-avatar>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-text>
-                <div *ngIf="contentLoaded">
-                    <h3 class="text-center">{{lectureName}}</h3>
-                    <h3 class="text-center">{{email}}</h3>
-                    <h3 class="text-center">{{departmentName}}</h3>
-                </div>
-                <div *ngIf="!contentLoaded">
-                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
-                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
-                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
-                </div>
-            </ion-text>
-        </ion-card-content>
+      <ion-card-header>
+        <ion-card-title class ="text-center"></ion-card-title>
+        <ion-avatar class="avatar">
+          <!--<img src="../../assets/images/profile.jpg">-->
+        </ion-avatar>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-text>
+      <h3 class="text-center" >{{lectureName}}</h3>
+      <h3 class="text-center">{{email}}</h3>
+      <h3 class="text-center">{{departmentName}}</h3>
+    </ion-text>
+    </ion-card-content>
     </ion-card>
     <ion-card color="light">
-        <ion-card-header>
-            <ion-card-title class="text-center"></ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-            <ion-item-divider>
-                <h3>Modules</h3>
-            </ion-item-divider>
-            <ion-item>
-                <ul>
-                    <div *ngIf="contentLoaded">
-                        <ion-list *ngFor="let lecInfo of lectureInfo">
-                            <ion-button (click)="getModule(lecInfo.lecSubId)">{{lecInfo.subjCode}}</ion-button>
-                        </ion-list>
-                    </div>
-                    <div *ngIf="!contentLoaded">
-                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
-                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
-                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
-                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
-                    </div>
-                </ul>
-            </ion-item>
-        </ion-card-content>
-    </ion-card>
-</ion-content>
+      <ion-card-header>
+        <ion-card-title class="text-center"></ion-card-title>
+      </ion-card-header>
+    <ion-card-content>
+    <ion-item-divider>
+      <h3>Modules</h3>
+    </ion-item-divider>
+    <ion-item >
+      <ul >
+          <ion-list *ngFor="let lecInfo of lectureInfo">
+              <ion-button  (click)="getModule(lecInfo.lecSubId)" >{{lecInfo.subjCode}}</ion-button>
+          </ion-list>
+      </ul>
+  </ion-item>
+  </ion-card-content>
+  </ion-card>
+  </ion-content>
+  
