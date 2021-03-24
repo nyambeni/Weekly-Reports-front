@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { LoginService } from '../login.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 
 
@@ -14,24 +15,25 @@ export class LoginPage implements OnInit {
 
   role= ''
   select = {
-    email: '',
+    staffNo: '',
     password: ''
   };
 
-  lecture={
-    email: '',
+  hod={
+    headNum: '',
     password: ''
   }
 
-  hod={
-    email: '',
+  lecture={
+    lecNum: '',
     password: ''
   }
 
 
   constructor(public navCtrl: NavController,
               private router: Router,
-              private log:LoginService) { }
+              private log:LoginService,
+              public loadingController: LoadingController) { }
 
   ngOnInit() {
   }
@@ -39,28 +41,56 @@ export class LoginPage implements OnInit {
   logForm() {
 
     if (this.role == 'HOD'){
-
-      this.hod.email = this.select.email
+      this.hod.headNum = this.select.staffNo
       this.hod.password = this.select.password
-      console.log(this.hod);
 
       this.log.hodLogin(this.hod)
       .subscribe(data => {
-        console.log(data)
-      });
-      this.navCtrl.navigateForward('/hod-dashboard');
+        let dash: NavigationExtras = {
+          state:{
+            dash: data
+          }
+        }
+        console.log(dash)
+        this.presentLoading();
+        this.navCtrl.navigateForward('/hod-dashboard', dash);
+      },
+      error=>{
+        console.log('wrong credentials')
+      })
 
     } else if(this.role == 'LECTURER') {
-      this.lecture.email = this.select.email
+      this.lecture.lecNum = this.select.staffNo
       this.lecture.password = this.select.password
       console.log(this.lecture);
 
       this.log.lectureLogin(this.lecture)
       .subscribe(data => {
-        console.log(data)
-        this.navCtrl.navigateForward('/lecture-dashboard');
+
+        let dash: NavigationExtras = {
+          state:{
+            dash: data
+          }
+        }
+        console.log(dash)
+        this.presentLoading();
+        this.navCtrl.navigateForward('/lecture-dashboard',dash);
+        
 
       })
     }
   }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Logging in...',
+      duration: 2000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+
 }

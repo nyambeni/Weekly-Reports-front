@@ -13,11 +13,8 @@
             <ion-item-divider>
                 <h3>Modules</h3>
             </ion-item-divider>
-            <!--<ul >
-      <ion-list *ngFor="let mod of modules">
-          <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjCode}}</ion-button>
-      </ion-list>
-  </ul>-->
+
+            <ion-item *ngFor="let mod of modules">{{mod.subjCode}}</ion-item>
         </ion-card-content>
     </ion-card>
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-lecture-dashboard',
@@ -10,67 +10,76 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class LectureDashboardPage implements OnInit {
 
+  contentLoaded = false;
+
 
   modules: any;
   subjName = '';
   subjCode = '';
-  lecName = '';
-  lecSubId = '';
+  lectureInfo: any
+  departmentName
+  email
+  lectureName
+  lecturId
 
   constructor(private router: Router,
-              private lectureService: LectureService) { }
+    private lectureService: LectureService,
+    private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.modules = this.router.getCurrentNavigation().extras.state.dash;
+        this.lecturId = this.modules[0].lecNum
+
+
+      }
+    })
+
+    setTimeout(()=>{
+      this.contentLoaded = true;
+    }, 3000);
+
+  }
 
   ngOnInit() {
-    this.Display();
+    this.Display()
   }
 
-  Display(){
-    console.log('values ', this.modules);
-    this.lectureService.getSubjects()
-    .subscribe(data => { this.modules = data; },
-      error => {});
-  }
-
-  getModule(lecSubId) {
-
-    this.lectureService.getSubject(lecSubId)
-    .subscribe(data => {
-      const myModules: NavigationExtras = {
-        state: {
-          modules: data
-        }
-      };
-      console.log(myModules);
-      this.router.navigate(['/lecturer-report'], myModules);
-    },
-      error => {});
-
-    /*let forNav: NavigationExtras={
-      state:{
-        lecSubId: lecSubId
-      }
-    };
-
-    console.log(forNav)
-  this.router.navigate(['/lecturer-report'],forNav)*/
- // this.router.navigateByUrl('/lecturer-report', forNav)
-
-    /*console.log('get',lecSubId)
-      this.lectureService.getSubject(lecSubId)
+  Display() {
+    this.lectureService.getSubjects(this.lecturId)
       .subscribe(data => {
-        let forNav: NavigationExtras={
-          queryParams:{
-            special: JSON.stringify(lecSubId)
+      this.lectureInfo = data
+        this.departmentName = this.lectureInfo[0].deptName
+        this.lectureName = this.lectureInfo[0].title+" "+this.lectureInfo[0].lecName+" "+this.lectureInfo[0].lecSurname
+        this.email = this.lectureInfo[0].email
+      
+        console.log('display', this.lectureInfo)
+      },
+        error => { })
+  }
+
+
+  getModule(id) {
+    this.lectureService.getSubject(id)
+      .subscribe(data => {
+        let myModules: NavigationExtras = {
+          state: {
+            modules: data
           }
-        };
-       // data = this.modules.lecSubId
+        }
+        console.log(myModules)
+        this.router.navigate(['/lecturer-report'], myModules)
+      },
+        error => { console.log('cant') })
+  }
 
-        console.log(forNav)
-      //this.router.navigate[('/lecturer-report')]
-      this.router.navigateByUrl('/lecturer-report', forNav)
-    },
-        error=>{}
-      )*/
+  reports(){
+    console.log(this.lecturId)
+    let myReports: NavigationExtras = {
+      state:{
+        myReports: this.lecturId
+      }
     }
-
+    console.log('move to reports', myReports)
+    this.router.navigate(['/reports'], myReports)
+  }
 }

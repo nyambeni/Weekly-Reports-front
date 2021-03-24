@@ -10,7 +10,7 @@ export class HodService {
   constructor(private http:HttpClient) { }
 
   getReports(){
-    return this.http.get("http://localhost:4041/hod/hodReport")
+    return this.http.get("http://10.100.14.10:4041/hod/hodReport")
 
   }
 }
