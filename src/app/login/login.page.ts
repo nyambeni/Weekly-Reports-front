@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { NavController } from '@ionic/angular';
 import { LoginService } from '../login.service';
 import { NavigationExtras, Router } from '@angular/router';
@@ -12,9 +13,11 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+
+  constructor() { }
+
   role= ''
   select = {
-<<<<<<< HEAD
     staffNo: '',
     password: ''
   };
@@ -29,7 +32,7 @@ export class LoginPage implements OnInit {
     password: ''
   }
 
-=======
+
     email: '',
     password: ''
   };
@@ -44,7 +47,7 @@ export class LoginPage implements OnInit {
     password: ''
   }
 
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+
 
   constructor(public navCtrl: NavController,
               private router: Router,
@@ -53,10 +56,11 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+
   logForm() {
 
     if (this.role == 'HOD'){
-<<<<<<< HEAD
+
       this.hod.headNum = this.select.staffNo
       this.hod.password = this.select.password
 
@@ -76,7 +80,7 @@ export class LoginPage implements OnInit {
 
     } else if(this.role == 'LECTURER') {
       this.lecture.lecNum = this.select.staffNo
-=======
+
 
       this.hod.email = this.select.email
       this.hod.password = this.select.password
@@ -90,13 +94,13 @@ export class LoginPage implements OnInit {
 
     } else if(this.role == 'LECTURER') {
       this.lecture.email = this.select.email
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+
       this.lecture.password = this.select.password
       console.log(this.lecture);
 
       this.log.lectureLogin(this.lecture)
       .subscribe(data => {
-<<<<<<< HEAD
+
 
         let dash: NavigationExtras = {
           state:{
@@ -105,12 +109,13 @@ export class LoginPage implements OnInit {
         }
         console.log(dash)
         this.navCtrl.navigateForward('/lecture-dashboard',dash);
-=======
+
         console.log(data)
         this.navCtrl.navigateForward('/lecture-dashboard');
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+
 
       })
     }
   }
+
 }
