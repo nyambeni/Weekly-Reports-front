@@ -7,21 +7,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HodService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getReports(id){
-    return this.http.get("http://localhost:4041/hod/hodReport/"+id)
+    return this.http.get('http://localhost:4041/hod/hodReport/' + id);
 
   }
 
   hodDash(id){
-    return this.http.get("http://localhost:4041/hod/hodDashboard/"+id)
+    return this.http.get('http://localhost:4041/hod/hodDashboard/' + id);
   }
 
   hodDashMod(id){
-    return this.http.get("http://localhost:4041/hod/lecturerID/"+id)
+    return this.http.get('http://localhost:4041/hod/lecturerID/' + id);
   }
 
-
-  
 }

@@ -19,25 +19,26 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./hod-report.page.scss'],
 })
 export class HodReportPage implements OnInit {
-
-  hod: any
-  activities = ' '
-  assess = ' '
-  challRecomm = ' '
-  subjCode = ' '
-  temp:any
-  deptId
-  reports: Report[] = [];
-<<<<<<< HEAD
   constructor(private hodService: HodService, private router: Router, private route: ActivatedRoute, private lecRPort: LecturerReportPage) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.deptId = this.router.getCurrentNavigation().extras.state.mySummary;
-        console.log(this.deptId)
+        console.log(this.deptId);
 
       }
-    })
+    });
   }
+
+  hod: any;
+  activities = ' ';
+  assess = ' ';
+  challRecomm = ' ';
+  subjCode = ' ';
+  temp: any;
+  deptId;
+  reports: Report[] = [];
+
+  pdfObj: any;
 
   create() {
     this.lecRPort.createPdf();
@@ -46,36 +47,20 @@ export class HodReportPage implements OnInit {
   download() {
     this.lecRPort.downloadPdf();
   }
-=======
-  pdfObj: any;
-  constructor(private hodService: HodService, private file: File, private plt: Platform,
-    private fileOpener: FileOpener,) { }
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
+
 
   ngOnInit() {
-    this.displaySummary()
+    this.displaySummary();
   }
 
   displaySummary() {
-  
+
     this.hodService.getReports(this.deptId).subscribe(data => {
-      this.hod = data
+      this.hod = data;
       console.log(data);
       console.log(this.hod);
     }, error => console.log(error));
-    
-  }
-<<<<<<< HEAD
-  
-=======
-  downloadPdf() {
-    if (this.plt.is('cordova')) {
 
-    } else {
-      this.pdfObj.download();
     }
-  }
-
-
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
 }
+

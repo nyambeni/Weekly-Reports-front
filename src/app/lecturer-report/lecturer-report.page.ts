@@ -56,12 +56,12 @@ export class LecturerReportPage implements OnInit {
 
   }
 
-
+  teachModes = [];
   report = {
     lecSubId: 0,
     numStudents: '',
-    topicsCovered: '',
     teachMode: '',
+    topicsCovered: '',
     presentMode: '',
     resource: '',
     attendAvg: '',
@@ -105,7 +105,7 @@ export class LecturerReportPage implements OnInit {
         this.report.topicsCovered,
 
         { text: 'Mode of Teaching Used', style: 'subheader' },
-        this.report.teachMode,
+        this.teachModes,
 
         { text: 'Mode of Presentation', style: 'subheader' },
         this.report.presentMode,
@@ -142,11 +142,15 @@ export class LecturerReportPage implements OnInit {
     this.pdfObj = pdfMake.createPdf(docDefinition);
 
     this.report.lecSubId = Number(this.lecSubId);
+    for (let k = 0; k < this.teachModes.length; k++){
+      this.report.teachMode = (this.teachModes[k] + '\n' + this.report.teachMode ).trim();
+    }
+
+    this.report.lecSubId = Number(this.lecSubId);
 
     this.lectureService.createReport(this.report)
    .subscribe(data => {this.myMessage = 'Report is set Successfully'; },
      error => {this.myMessage = 'Failed to create Report, CODE: DP'; });
-     this.showPrompt();
   }
 
   downloadPdf() {
@@ -171,6 +175,7 @@ export class LecturerReportPage implements OnInit {
         {
           text: 'Yes',
           handler: (data: any) => {
+            this.createPdf();
             console.log('Saved Information', data);
             this.displayToast();
           }
@@ -190,9 +195,9 @@ export class LecturerReportPage implements OnInit {
       duration: 2000
     }).then((toast) => {
       toast.present();
-      this.navCtrl.navigateBack('/reports')
+      this.navCtrl.navigateBack('/reports');
     });
-  } 
+  }
 
 
 }

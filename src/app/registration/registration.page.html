@@ -1,69 +1,75 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>registration</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>registration</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref=""></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content style="text-align: center;" >
-  
-  <form>
-    <ion-item lines="full">
-      <ion-label class="center" position="floating">Name</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+<ion-content style="text-align: center;">
 
-    <ion-item lines="full">
-      <ion-label class="center" position="floating">surname</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+    <!---->
+    <form (ngSubmit)="logForm()">
 
-  
-    <ion-item class="item-input item-select">
-      <div class="input-label"   >
-        <select class="center">
-          <option selected>Miss</option>
-          <option>Mr</option>
-          <option selected>Mrs</option>
-          <option>Dr</option>
-        </select>
-      </div>
-      
-    </ion-item>
-    
-    
-    <ion-item class="item-input item-select" >
-      <div class="input-label">
-      
-   
-      <select class="center">
-        <option selected>FOUNDATION</option>
-        <option>INFORMATICS</option>
-        
-        
-      </select>
-    </div>
-    </ion-item>
-    
-    
-    <ion-item lines="full">
-      <ion-label class="center"position="floating">Email</ion-label>
-      <ion-input type="text" required></ion-input>
-    </ion-item>
+        <ion-item>
+            <ion-label position="floating ">Title</ion-label>
+            <ion-select #newSelect [(ngModel)]="select.title" name="select.title" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+                <ion-select-option value="Mr">Mr</ion-select-option>
+                <ion-select-option value="Mrs">Mrs</ion-select-option>
+                <ion-select-option value="MISS">MISS</ion-select-option>
+            </ion-select>
+        </ion-item>
 
-    <ion-item lines="full">
-      <ion-label class="center" position="floating">Password</ion-label>
-      <ion-input type="password" required></ion-input>
-    </ion-item>
+        <ion-item>
+            <ion-label position="floating ">Lecturer Number</ion-label>
+            <ion-input type="text" [(ngModel)]="select.lecNum" name="select.lecNum"></ion-input>
+        </ion-item>
 
-    <ion-row>
-      <ion-col >
-        <ion-button type="submit"  color="danger" expand="block">CREATE ACCOUNT</ion-button>
-        <a  [routerLink]="['/registration']" class="small-text">CANCEL</a>
-      </ion-col>
-    </ion-row>
-  </form>
+        <ion-item>
+            <ion-label position="floating ">Select Department</ion-label>
+            <ion-select [ngModel]="department" multiple="false" interface="action-sheet" (ngModelChange)="onDropdownChange($event)" class="form-control" id="department" name="department">
+                <ion-select-option *ngFor="let dep of department" [value]="dep.depCode">
+                    {{dep.deptName}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
 
+
+        <ion-item>
+            <ion-label position="floating ">Name</ion-label>
+            <ion-input type="text" [(ngModel)]="select.lecName" name="select.lecName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating ">Surname</ion-label>
+            <ion-input type="text" [(ngModel)]="select.lecSurname" name="select.lecSurname"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating ">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="select.email" name="select.email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating ">Password</ion-label>
+            <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label position="floating ">Modules</ion-label>
+            <ion-select [ngModel]="selectModules" multiple="true" (ngModelChange)="selectModules($event)" class="form-control" id="modules" name="modules">
+                <ion-select-option *ngFor="let mod of modules" [value]="mod.subjCode">
+                    {{mod.subjName}}
+                </ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item no-lines no-padding class="custom-checkbox">
+            <ion-label>I agree <a>Terms and Conditions</a></ion-label>
+            <ion-checkbox name="terms" [(ngModel)]="terms" checked="false" required></ion-checkbox>
+        </ion-item>
+
+        <ion-button size="small" shape="round" type="submit" [disabled]="!terms" block>create Account</ion-button>
+    </form>
 </ion-content>

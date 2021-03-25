@@ -77,7 +77,7 @@
         <ion-textarea type="text " [(ngModel)]="report.challRecomm " name="challRecomm "></ion-textarea>
     </ion-item>
 
-    <ion-button size="small " (click)="createPdf()" block>Create Report</ion-button>
-    <ion-button size="small " (click)="this.router.navigateByUrl( '/login')">Cancel</ion-button>
+    <ion-button size="small " (click)="showPrompt()" [disabled]="!report.numStudents || !report.attendAvg" block>Create Report</ion-button>
+    <ion-button size="small " (click)="this.router.navigateByUrl( '/lecture-dashboard')">Cancel</ion-button>
 
 </ion-content>

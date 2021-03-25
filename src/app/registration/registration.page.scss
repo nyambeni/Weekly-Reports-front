@@ -1,12 +1,21 @@
 /*.item-select select,  .item-select select option{
     left: 75%;
   }*/
-  
-  .item-Input, .input-label, .center-block {
+
+.item-Input,
+.input-label,
+.center-block {
     margin: auto;
     display: block;
     background-color: blue;
-  }
-  .center {
+}
+
+.center {
     text-align: center;
+}
+
+.custom-checkbox {
+    .item-cover {
+        width: 10%;
+    }
 }
