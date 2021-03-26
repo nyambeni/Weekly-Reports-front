@@ -195,7 +195,7 @@ export class LecturerReportPage implements OnInit {
       duration: 2000
     }).then((toast) => {
       toast.present();
-      this.navCtrl.navigateBack('/reports');
+      this.navCtrl.navigateBack('/lecture-dashboard');
     });
   }
 

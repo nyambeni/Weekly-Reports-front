@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { HodService } from '../hod.service';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 @Component({
   selector: 'app-hod-dashboard',
@@ -59,5 +58,15 @@ export class HodDashboardPage implements OnInit {
     console.log('hod', mySummary);
 
     this.router.navigate(['/hod-report'], mySummary);
+  }
+
+  detailedReport(modId){
+    const detailed: NavigationExtras = {
+      state: {
+        detailed: modId
+      }
+    };
+    console.log('move to detailed', detailed)
+    this.router.navigate(['/detailed-report'],detailed)
   }
 }

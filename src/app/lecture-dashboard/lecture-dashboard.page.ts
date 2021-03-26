@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class LectureDashboardPage implements OnInit {
 
-  contentLoaded = false;
+  contentLoaded = true;
 
   modules: any;
   subjName = '';
@@ -33,10 +33,10 @@ export class LectureDashboardPage implements OnInit {
       }
     });
 
-    setTimeout(()=>{
+    /*setTimeout(()=>{
       this.contentLoaded = true;
     }, 3000);
-
+*/
 
   }
 

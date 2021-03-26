@@ -53,7 +53,6 @@ export class LoginPage implements OnInit {
           }
         };
         console.log(dash);
-        this.presentLoading();
         this.navCtrl.navigateForward('/hod-dashboard', dash);
       },
       error => {

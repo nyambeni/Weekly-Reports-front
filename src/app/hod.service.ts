@@ -19,7 +19,7 @@ export class HodService {
   }
 
   hodDashMod(id){
-    return this.http.get('http://localhost:4041/hod/lecturerID/' + id);
+    return this.http.get('http://localhost:4041/hod/subjectCode/' + id);
   }
 
 }

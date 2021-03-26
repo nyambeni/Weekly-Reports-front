@@ -11,6 +11,10 @@ export class LectureService {
     return this.http.get('http://localhost:4041/lecture/lectureDashboard/' + lectureId);
   }
 
+  getDetailedReport(Id){
+    return this.http.get('http://localhost:4041/lecture/reportDetails/' + Id);
+  }
+
   getSubject(Id){
     return this.http.get('http://localhost:4041/lecture/selectedModule/' + Id);
   }

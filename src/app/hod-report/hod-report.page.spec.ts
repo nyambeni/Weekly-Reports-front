@@ -1,24 +1,66 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { HodService } from '../hod.service';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
+import { LecturerReportPage  } from '../lecturer-report/lecturer-report.page';
 
-import { HodReportPage } from './hod-report.page';
+import { Report } from '../report';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+import { File } from '@ionic-native/file/ngx';
 
-describe('HodReportPage', () => {
-  let component: HodReportPage;
-  let fixture: ComponentFixture<HodReportPage>;
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { Platform } from '@ionic/angular';
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HodReportPage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-    fixture = TestBed.createComponent(HodReportPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+@Component({
+  selector: 'app-hod-report',
+  templateUrl: './hod-report.page.html',
+  styleUrls: ['./hod-report.page.scss'],
+})
+export class HodReportPage implements OnInit {
+  constructor(private hodService: HodService, private router: Router, private route: ActivatedRoute, private lecRPort: LecturerReportPage) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.deptId = this.router.getCurrentNavigation().extras.state.mySummary;
+        console.log(this.deptId);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+      }
+    });
+  }
+
+  hod: any;
+  activities = ' ';
+  assess = ' ';
+  challRecomm = ' ';
+  subjCode = ' ';
+  temp: any;
+  deptId;
+  reports: Report[] = [];
+
+  pdfObj: any;
+
+  create() {
+    this.lecRPort.createPdf();
+  }
+
+  download() {
+    this.lecRPort.downloadPdf();
+  }
+
+
+  ngOnInit() {
+    this.displaySummary();
+  }
+
+  displaySummary() {
+
+    this.hodService.getReports(this.deptId).subscribe(data => {
+      this.hod = data;
+      console.log(data);
+      console.log(this.hod);
+    }, error => console.log(error));
+
+    }
+}
+

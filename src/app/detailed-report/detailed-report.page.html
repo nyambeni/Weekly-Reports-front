@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>detailed Report</ion-title>
+    </ion-toolbar>
+    <ion-item>
+        <a [routerLink]="['/hod-dashboard']" class="view" (click)="reports()">My Reports</a>
+    </ion-item>
+</ion-header>
+
+<ion-content color="light">
+    <ion-card color="light">
+        <ion-card-content>
+            <div class="form-group">
+                <label>Number of Students:</label>
+                <p>{{numberOfStudents}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Week average Attendance:</label>
+                <p>{{averAttendance}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Topic(s) covered:</label>
+                <p>{{topicsCovered}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Mode of Teaching Used:</label>
+                <p>{{teachMode}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Mode of Presentation:</label>
+                <p>{{presentMode}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Resources Used:</label>
+                <p>{{resource}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Activities:</label>
+                <p>{{activities}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Assessments:</label>
+                <p>{{assess}}</p>
+            </div>
+
+            <div class="form-group">
+                <label>Challenge/Recommendations:</label>
+                <p>{{challRecomm}}</p>
+            </div>
+
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

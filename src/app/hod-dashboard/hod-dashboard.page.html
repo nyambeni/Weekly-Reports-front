@@ -33,13 +33,13 @@
             </ion-item-divider>
             <ion-item>
                 <ul>
-                    <ion-item *ngFor="let dash of dashboard" [routerLink]="['/hod-report']">{{dash.subjCode}}</ion-item>
+                    <ion-item *ngFor="let dash of dashboard" (click)="detailedReport(dash.reportNum)">{{dash.subjCode}}</ion-item>
 
                 </ul>
             </ion-item>
             <div class="ion-padding">
                 <ion-button size="small" color="primary" (click)="summary()" expand="block">Summary</ion-button>
-                <ion-button size="small" color="primary" [routerLink]="['/landing']" expand="block" shape="round" fill="clear">logout</ion-button>
+                <ion-button size="small" color="primary" [routerLink]="['/login']" expand="block" shape="round" fill="clear">logout</ion-button>
             </div>
         </ion-card-content>
     </ion-card>
