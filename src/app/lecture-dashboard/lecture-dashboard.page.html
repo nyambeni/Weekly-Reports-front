@@ -50,9 +50,9 @@
             <ion-item>
                 <ul>
                     <div *ngIf="contentLoaded">
-                        <ion-list *ngFor="let lecInfo of lectureInfo">
+                        <div *ngFor="let lecInfo of lectureInfo">
                             <ion-button (click)="getModule(lecInfo.lecSubId)">{{lecInfo.subjCode}}</ion-button>
-                        </ion-list>
+                        </div>
                     </div>
                     <div *ngIf="!contentLoaded">
                         <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
@@ -64,4 +64,12 @@
             </ion-item>
         </ion-card-content>
     </ion-card>
+
+    <div *ngIf="contentLoaded" class="ion-padding">
+        <ion-button size="small" color="primary" [routerLink]="['/login']" expand="block" shape="round" fill="clear">logout</ion-button>
+    </div>
+    <div *ngIf="!contentLoaded" class="ion-padding">
+        <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
+    </div>
+
 </ion-content>

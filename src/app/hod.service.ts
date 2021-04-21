@@ -10,16 +10,16 @@ export class HodService {
   constructor(private http: HttpClient) { }
 
   getReports(id){
-    return this.http.get('http://localhost:4041/hod/hodReport/' + id);
+    return this.http.get('http://168.172.190.54:4041/hod/hodReport/' + id);
 
   }
 
   hodDash(id){
-    return this.http.get('http://localhost:4041/hod/hodDashboard/' + id);
+    return this.http.get('http://168.172.190.54:4041/hod/hodDashboard/' + id);
   }
 
   hodDashMod(id){
-    return this.http.get('http://localhost:4041/hod/subjectCode/' + id);
+    return this.http.get('http://168.172.190.54:4041/hod/subjectCode/' + id);
   }
 
 }

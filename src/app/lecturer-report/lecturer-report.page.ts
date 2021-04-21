@@ -143,7 +143,7 @@ export class LecturerReportPage implements OnInit {
 
     this.report.lecSubId = Number(this.lecSubId);
     for (let k = 0; k < this.teachModes.length; k++){
-      this.report.teachMode = (this.teachModes[k] + '\n' + this.report.teachMode ).trim();
+      this.report.teachMode = (this.teachModes[k] + ' | \n' + this.report.teachMode ).trim();
     }
 
     this.report.lecSubId = Number(this.lecSubId);

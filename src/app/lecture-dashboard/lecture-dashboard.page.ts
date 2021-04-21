@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lecture-dashboard',
@@ -20,14 +21,17 @@ export class LectureDashboardPage implements OnInit {
   email;
   lectureName;
   lecturId;
+  Assess;
 
   constructor(private router: Router,
               private lectureService: LectureService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private alertCtrl: AlertController) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.modules = this.router.getCurrentNavigation().extras.state.dash;
         this.lecturId = this.modules[0].lecNum;
+        console.log('ma val ', this.modules)
 
 
       }
@@ -43,8 +47,9 @@ export class LectureDashboardPage implements OnInit {
   ngOnInit() {
     this.Display();
   }
-
+ 
   Display() {
+
     this.lectureService.getSubjects(this.lecturId)
       .subscribe(data => {
       this.lectureInfo = data;
@@ -59,6 +64,7 @@ export class LectureDashboardPage implements OnInit {
 
 
   getModule(id) {
+    console.log('get dash', this.modules)
     this.lectureService.getSubject(id)
       .subscribe(data => {
         const myModules: NavigationExtras = {
@@ -82,4 +88,32 @@ export class LectureDashboardPage implements OnInit {
     console.log('move to reports', myReports);
     this.router.navigate(['/reports'], myReports);
   }
+
+  async showAlert() {
+    await this.alertCtrl.create({
+      header: "Assessment Info",
+      inputs: [
+        {type: 'text', name: 'assessment', placeholder: 'Assessment'},
+        {type: 'number', name: 'attempts', placeholder: 'Attempts'},
+        {type: 'number', name: 'submitted', placeholder: 'Submitted'}
+      ], 
+      buttons: [
+        {text: "Apply", handler: (res) => {
+          //console.log()this.Assess = res.assessment;
+          console.log(res.assessment);
+          console.log(res.attempts);
+          console.log(res.submitted);
+        }
+      },
+      {
+        text: 'Cancel'
+      }
+      ]
+    }).then(res => res.present());
+  }
+
+  /*logForm() {
+    this.showAlert();
+    console.log(this.Assess);
+  }*/
 }

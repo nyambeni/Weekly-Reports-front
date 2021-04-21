@@ -10,14 +10,14 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   lectureLogin(body: any){
-    return this.http.post('http://localhost:4041/login/lecturerLogin', body, {
+    return this.http.post('http://168.172.190.54:4041/login/lecturerLogin', body, {
       observe: 'body'
     });
     }
 
 
   hodLogin(body: any){
-    return this.http.post('http://localhost:4041/login/hodLogin', body, {
+    return this.http.post('http://168.172.190.54:4041/login/hodLogin', body, {
       observe: 'body',
     });
   }

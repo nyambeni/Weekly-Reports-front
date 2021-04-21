@@ -63,12 +63,12 @@ export class LoginPage implements OnInit {
       this.lecture.lecNum = this.select.staffNo;
       this.lecture.password = this.select.password;
       console.log(this.lecture);
-
+      
       this.log.lectureLogin(this.lecture)
       .subscribe(data => {
         console.log(data);
         this.presentLoading();
-        this.navCtrl.navigateForward('/lecture-dashboard');
+        //this.navCtrl.navigateForward('/lecture-dashboard');
 
         const dash: NavigationExtras = {
           state: {
@@ -77,6 +77,7 @@ export class LoginPage implements OnInit {
         };
         console.log(dash);
         this.presentLoading();
+        localStorage.setItem('token',this.lecture.toString())
         this.navCtrl.navigateForward('/lecture-dashboard', dash);
 
       });
