@@ -37,7 +37,7 @@ export class LectureDashboardPage implements OnInit {
       }
     });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.contentLoaded = true;
     }, 3000);
 
