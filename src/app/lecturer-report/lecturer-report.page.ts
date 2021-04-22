@@ -27,6 +27,19 @@ export class LecturerReportPage implements OnInit {
   Myname = '';
   module = '';
   department = '';
+
+  form2 = {
+    assesses: '',
+    numStud: '',
+    studSub: '',
+    numAtt: '',
+  };
+
+  sub() {
+    console.log(this.form2);
+  }
+
+
   constructor(public router: Router,
               private lectureService: LectureService,
               public navCtrl: NavController,

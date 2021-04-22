@@ -33,4 +33,20 @@ export class ReportsPage implements OnInit {
     });
   }
 
+  getModule(repNo){
+    console.log(repNo);
+    this.lectureService.getDetailedReport(repNo)
+    .subscribe(data => {
+
+      const detailed: NavigationExtras = {
+        state: {
+          detailed: data
+        }
+      };
+
+      this.router.navigate(['/lec-detailed-report'], detailed);
+    });
+  }
+
+
 }

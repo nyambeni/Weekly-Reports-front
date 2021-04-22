@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'detailed-report',
     loadChildren: () => import('./detailed-report/detailed-report.module').then( m => m.DetailedReportPageModule)
   },
+  {
+    path: 'lec-detailed-report',
+    loadChildren: () => import('./lec-detailed-report/lec-detailed-report.module').then( m => m.LecDetailedReportPageModule)
+  },
 
 
 
