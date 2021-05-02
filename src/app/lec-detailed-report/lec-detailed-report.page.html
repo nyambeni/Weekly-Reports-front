@@ -1,10 +1,10 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>lecDetailedReport</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
-        </ion-buttons>
     </ion-toolbar>
+    <ion-item>
+        <a [routerLink]="['/reports']">My Reports</a>
+    </ion-item>
 </ion-header>
 
 <ion-content>
@@ -61,9 +61,6 @@
     <ion-item>
         <ion-label position="stacked">Assessments</ion-label>
         <ion-input readonly>{{assess}}</ion-input>
-        <ion-input placeholder="Number of Students wrote"></ion-input>
-        <ion-input placeholder="Number of Students submitted"></ion-input>
-        <ion-input placeholder="Number of attempts"></ion-input>
     </ion-item>
 
     <ion-item>

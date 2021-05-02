@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
         <ion-title>
-            Lecturer Weekly Report
+            Lecturer Report
         </ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
@@ -26,7 +26,7 @@
 
     <ion-item>
         <ion-label position="stacked">Date:</ion-label>
-        <ion-input readonly>{{date| date:"yyyy/MM/dd"}}</ion-input><br>
+        <ion-input readonly>{{date| date:"yyyy/MM/dd"}}</ion-input>
     </ion-item>
 
     <ion-item>
@@ -67,10 +67,6 @@
     <ion-item>
         <ion-label position="floating ">Activities</ion-label>
         <ion-textarea type="text " [(ngModel)]="report.activities" name="activities "></ion-textarea>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating ">Assessments</ion-label>
-        <ion-textarea type="text " [(ngModel)]="report.assess" name="assess "></ion-textarea>
     </ion-item>
 
     <form #assForm="ngForm">

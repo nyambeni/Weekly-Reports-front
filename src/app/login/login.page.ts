@@ -53,6 +53,7 @@ export class LoginPage implements OnInit {
           }
         };
         console.log(dash);
+        this.presentLoading();
         this.navCtrl.navigateForward('/hod-dashboard', dash);
       },
       error => {
@@ -67,8 +68,6 @@ export class LoginPage implements OnInit {
       this.log.lectureLogin(this.lecture)
       .subscribe(data => {
         console.log(data);
-        this.presentLoading();
-        this.navCtrl.navigateForward('/lecture-dashboard');
 
         const dash: NavigationExtras = {
           state: {

@@ -1,9 +1,11 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>hod-dashboard</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="login"></ion-back-button>
-        </ion-buttons>
+    <ion-toolbar color="primary">
+        <div *ngIf="contentLoaded">
+            <ion-title>hod-dashboard</ion-title>
+        </div>
+        <div *ngIf="!contentLoaded">
+            <ion-skeleton-text animated></ion-skeleton-text>
+        </div>
     </ion-toolbar>
 </ion-header>
 
@@ -11,15 +13,29 @@
     <ion-card color="light">
         <ion-card-header>
             <ion-card-title class="text-center"></ion-card-title>
-            <ion-avatar class="avatar">
-                <img src="../../assets/images/profile.jpg">
-            </ion-avatar>
+            <div *ngIf="contentLoaded">
+                <ion-avatar class="avatar">
+                    <img src="../../assets/images/av.png">
+                </ion-avatar>
+            </div>
+            <div *ngIf="!contentLoaded">
+                <ion-skeleton-text animated style="width: 2%;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 5%;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 2%;"></ion-skeleton-text>
+            </div>
         </ion-card-header>
         <ion-card-content>
             <ion-text>
-                <h3 class="text-center">{{hodName}}</h3>
-                <h3 class="text-center">{{email}}</h3>
-                <h3 class="text-center">{{deptName}}</h3>
+                <div *ngIf="contentLoaded">
+                    <h3 class="text-center">{{hodName}}</h3>
+                    <h3 class="text-center">{{email}}</h3>
+                    <h3 class="text-center">{{deptName}}</h3>
+                </div>
+                <div *ngIf="!contentLoaded">
+                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
+                </div>
             </ion-text>
         </ion-card-content>
     </ion-card>
@@ -29,17 +45,33 @@
         </ion-card-header>
         <ion-card-content>
             <ion-item-divider>
-                <h3>Modules</h3>
+                <div *ngIf="contentLoaded">
+                    <h3>Modules</h3>
+                </div>
+                <div *ngIf="!contentLoaded">
+                    <ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text>
+                </div>
             </ion-item-divider>
             <ion-item>
                 <ul>
-                    <ion-item *ngFor="let dash of dashboard" (click)="detailedReport(dash.reportNum)">{{dash.subjCode}}</ion-item>
-
+                    <div *ngIf="contentLoaded">
+                        <ion-item *ngFor="let dash of dashboard" (click)="detailedReport(dash.reportNum)">{{dash.subjCode}}</ion-item>
+                    </div>
+                    <div *ngIf="!contentLoaded">
+                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
+                        <ion-skeleton-text animated style="width: 3000%;"></ion-skeleton-text>
+                    </div>
                 </ul>
             </ion-item>
-            <div class="ion-padding">
+            <div *ngIf="contentLoaded" class="ion-padding">
                 <ion-button size="small" color="primary" (click)="summary()" expand="block">Summary</ion-button>
                 <ion-button size="small" color="primary" [routerLink]="['/login']" expand="block" shape="round" fill="clear">logout</ion-button>
+            </div>
+            <div *ngIf="!contentLoaded">
+                <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
+                <ion-skeleton-text animated style="width: 10%;"></ion-skeleton-text>
             </div>
         </ion-card-content>
     </ion-card>

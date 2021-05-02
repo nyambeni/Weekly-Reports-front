@@ -40,14 +40,6 @@ export class HodReportPage implements OnInit {
 
   pdfObj: any;
 
-  create() {
-    this.lecRPort.createPdf();
-  }
-
-  download() {
-    this.lecRPort.downloadPdf();
-  }
-
 
   ngOnInit() {
     this.displaySummary();

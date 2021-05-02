@@ -17,6 +17,8 @@ export class HodDashboardPage implements OnInit {
   email;
   deptName;
 
+  contentLoaded = false;
+
 
   constructor(private hodService: HodService, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -42,6 +44,9 @@ export class HodDashboardPage implements OnInit {
           error => {});
       }
     });
+    setTimeout(() => {
+      this.contentLoaded = true;
+    }, 3000);
   }
 
   ngOnInit() {
