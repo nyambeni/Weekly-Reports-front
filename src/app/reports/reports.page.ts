@@ -11,12 +11,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class ReportsPage implements OnInit {
   modules: any;
   temp: any;
+  email
+  lectureName
+  departmentName
 
   constructor(private router: Router, private lectureService: LectureService, private route: ActivatedRoute ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.temp = this.router.getCurrentNavigation().extras.state.myReports;
         console.log('my reporst:', this.temp);
+        this.departmentName = this.temp[0].deptName;
+        this.lectureName = this.temp[0].title + ' ' + this.temp[0].lecName + ' ' + this.temp[0].lecSurname;
+        this.email = this.temp[0].email;
+        console.log(this.departmentName)
+        console.log(this.lectureName)
+        console.log(this.email)
+
       }
     });
   }

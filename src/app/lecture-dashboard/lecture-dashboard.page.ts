@@ -21,6 +21,7 @@ export class LectureDashboardPage implements OnInit {
   lectureName;
   lecturId;
   Assess;
+  myrepo: any
 
   constructor(private router: Router,
               private lectureService: LectureService,
@@ -51,6 +52,7 @@ export class LectureDashboardPage implements OnInit {
     this.lectureService.getSubjects(this.lecturId)
       .subscribe(data => {
       this.lectureInfo = data;
+      this.myrepo = data
       this.departmentName = this.lectureInfo[0].deptName;
       this.lectureName = this.lectureInfo[0].title + ' ' + this.lectureInfo[0].lecName + ' ' + this.lectureInfo[0].lecSurname;
       this.email = this.lectureInfo[0].email;
@@ -80,7 +82,7 @@ export class LectureDashboardPage implements OnInit {
     console.log(this.lecturId);
     const myReports: NavigationExtras = {
       state: {
-        myReports: this.lecturId
+        myReports: this.myrepo
       }
     };
     console.log('move to reports', myReports);
