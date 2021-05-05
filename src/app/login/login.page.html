@@ -9,33 +9,62 @@
 
 
 <ion-content style="text-align: center;">
-    <form (ngSubmit)="logForm()">
-        <ion-list>
+    <div *ngIf="contentLoaded">
+        <form (ngSubmit)="logForm()">
+            <ion-list>
 
-            <ion-item>
-                <ion-label position="floating ">Role</ion-label>
-                <ion-select #newSelect [(ngModel)]="role" name="role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
-                    <ion-select-option value="HOD" checked="true">HOD</ion-select-option>
-                    <ion-select-option value="LECTURER">Lecturer</ion-select-option>
-                </ion-select>
-            </ion-item>
+                <ion-item>
+                    <ion-label position="floating ">Role</ion-label>
+                    <ion-select #newSelect [(ngModel)]="role" name="role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+                        <ion-select-option value="HOD" checked="true">HOD</ion-select-option>
+                        <ion-select-option value="LECTURER">Lecturer</ion-select-option>
+                    </ion-select>
+                </ion-item>
 
-            <ion-item>
-                <ion-label position="floating ">Username</ion-label>
-                <ion-input type="tel" [(ngModel)]="select.staffNo" name="select.staffNo"></ion-input>
-            </ion-item>
+                <ion-item>
+                    <ion-label position="floating ">Username</ion-label>
+                    <ion-input type="staffNo" [(ngModel)]="select.staffNo" name="select.email"></ion-input>
+                </ion-item>
 
-            <ion-item>
-                <ion-label position="floating ">Password</ion-label>
-                <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
-            </ion-item>
+                <ion-item>
+                    <ion-label position="floating ">Password</ion-label>
+                    <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
+                </ion-item>
 
-            <div padding>
-                <ion-button size="small" shape="round" type="submit" block>Login</ion-button>
-            </div>
-            <a size="small" [routerLink]="['/registration']">CREATE ACCOUNT</a>
+                <div padding>
+                    <ion-button size="small" shape="round" type="submit" block>Login</ion-button>
+                </div>
+                <a size="small" [routerLink]="['/registration']">CREATE ACCOUNT</a>
 
-        </ion-list>
-    </form>
+            </ion-list>
+        </form>
+    </div>
+    <div *ngIf="!contentLoaded">
+        <form (ngSubmit)="logForm()">
+            <ion-list>
+
+                <ion-item>
+                    <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+                    <ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text>
+                </ion-item>
+
+                <ion-item>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+
+                <ion-item>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                </ion-item>
+
+                <div padding>
+                    <ion-skeleton-text animated style="width: 20%; text-align: center;"></ion-skeleton-text>
+                </div>
+                <ion-skeleton-text animated style="width: 20%;"></ion-skeleton-text>
+
+            </ion-list>
+        </form>
+    </div>
 
 </ion-content>

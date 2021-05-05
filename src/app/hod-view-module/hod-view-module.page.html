@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-buttons slot="start">
 	  <ion-back-button></ion-back-button>
 	</ion-buttons>
-    <ion-title>Summary</ion-title>
+    <ion-title>{{moduleCode}}</ion-title>
   </ion-toolbar>
   <ion-toolbar>
 	<ion-item lines="full">
@@ -15,6 +15,7 @@
 </ion-header>
 
 <ion-content class="background">
+  <ion-label size="large"><h4 class="text-center">{{errorMsg}}</h4></ion-label>
   <div *ngIf="reports?.length">
   <ion-card *ngFor="let report of reports">
    <ion-card-header>
@@ -31,15 +32,18 @@
 	   </div>
 	 </ion-text>
 	 <h3 class="text-center"><b>Challenges</b></h3>
+	 
      <ion-text>
 	   <div class="styleContent">
 	   <p>{{report.challRecomm}}</p>
 	   </div>
 	 </ion-text>
+	 
+   <ion-label><ion-button color="primary" size="small" expand="full" (click)="detailedReport(report.reportNum)">view report</ion-button></ion-label>
    </ion-card-content>
   </ion-card>
   </div>
   <div *ngIf="!reports?.length">
-	   <h4 class="text-center">No reports found!</h4>
+     <h3 class="text-center" ><b>No reports found!</b></h3>
   </div>
 </ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="background">
+    <ion-card *ngFor="let report of reports">
+     
+     <ion-card-header>
+      <ion-card-title class="text-center"><b>{{report.subjCode}}</b></ion-card-title>
+      <ion-label size="small"><h4 class="text-center"><b>Department:</b> Informatics</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Lecturer:</b> {{report.title}}&nbsp;{{report.lecName}}&nbsp;{{report.lecSurname}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Date:</b> {{report.date | date:'M/d/y'}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Number of Students:</b> {{report.numStudents}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Week avarage attendance:</b> {{report.attendAvg}}</h4></ion-label>
+     </ion-card-header>
+     <ion-card-content  class="background">
+       <h3 class="text-center"><b>Weekly Assessment</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.assess}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Weekly Teachings</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.topicsCovered}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Challenges</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.challRecomm}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Channel(s) used</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.presentMode}}</p>
+         </div>
+       </ion-text>
+       </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

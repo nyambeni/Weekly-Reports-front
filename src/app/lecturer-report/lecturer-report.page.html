@@ -12,20 +12,20 @@
 <ion-content>
 
     <ion-item>
-        <ion-label>Lecture:</ion-label>
+        <ion-label position="stacked">Lecture:</ion-label>
         <ion-input>{{Myname}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Module:</ion-label>
+        <ion-label position="stacked">Module:</ion-label>
         <ion-input [(ngModel)]="module">{{modules[0].subjCode}} {{modules[0].subjName}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Department:</ion-label>
+        <ion-label position="stacked">Department:</ion-label>
         <ion-input [(ngModel)]="department">{{modules[0].deptName}}</ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label>Date:</ion-label>
+        <ion-label position="stacked">Date:</ion-label>
         <ion-input readonly>{{date| date:"yyyy/MM/dd"}}</ion-input><br>
     </ion-item>
 
@@ -45,7 +45,7 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating">Mode of Teaching Used</ion-label>
-        <ion-select #newSelect [(ngModel)]="report.teachMode" name="teachMode" multiple="true" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+        <ion-select #newSelect [(ngModel)]="teachModes" name="teachModes" multiple="true" [ngModelOptions]="{standalone: true}">
             <ion-select-option value="MyTUTor">MyTUTor</ion-select-option>
             <ion-select-option value="MS Teams">MS Teams</ion-select-option>
             <ion-select-option value="SMS">SMS</ion-select-option>
@@ -57,27 +57,40 @@
     </ion-item>
     <ion-item>
         <ion-label position="floating ">Mode of Presentation</ion-label>
-        <ion-input type="text " [(ngModel)]="report.presentMode " name="presentMode "></ion-input>
+        <ion-input type="text " [(ngModel)]="report.presentMode" name="presentMode "></ion-input>
     </ion-item>
     <ion-item>
         <ion-label position="floating ">Resources Used</ion-label>
-        <ion-input [(ngModel)]="report.resource " name="resource "></ion-input>
+        <ion-input [(ngModel)]="report.resource" name="resource "></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label position="floating ">Activities</ion-label>
-        <ion-textarea type="text " [(ngModel)]="report.activities " name="activities "></ion-textarea>
+        <ion-textarea type="text " [(ngModel)]="report.activities" name="activities "></ion-textarea>
     </ion-item>
     <ion-item>
         <ion-label position="floating ">Assessments</ion-label>
-        <ion-textarea type="text " [(ngModel)]="report.assess " name="assess "></ion-textarea>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating ">Challenge/Recommendations</ion-label>
-        <ion-textarea type="text " [(ngModel)]="report.challRecomm " name="challRecomm "></ion-textarea>
+        <ion-textarea type="text " [(ngModel)]="report.assess" name="assess "></ion-textarea>
     </ion-item>
 
-    <ion-button size="small " (click)="createPdf()" block>Create Report</ion-button>
-    <ion-button size="small " (click)="this.router.navigateByUrl( '/login')">Cancel</ion-button>
+    <form #assForm="ngForm">
+        <ion-item>
+            <ion-label position="stacked">Assessments</ion-label>
+            <ion-input [(ngModel)]="form2.assesses" name="assesses" placeholder="Assessment"></ion-input>
+            <ion-input [(ngModel)]="form2.numStud" name="numStud" placeholder="Number of Students wrote"></ion-input>
+            <ion-input [(ngModel)]="form2.studSub" name="studSub" placeholder="Number of Students submitted"></ion-input>
+            <ion-input [(ngModel)]="form2.numAtt" name="numAtt" placeholder="Number of attempts"></ion-input>
+            <ion-button size="small " type="ngSubmit" (click)="sub()">Submit</ion-button>
+        </ion-item>
+
+    </form>
+
+    <ion-item>
+        <ion-label position="floating ">Challenge/Recommendations</ion-label>
+        <ion-textarea type="text " [(ngModel)]="report.challRecomm" name="challRecomm "></ion-textarea>
+    </ion-item>
+
+    <ion-button size="small " (click)="showPrompt()" [disabled]="!report.numStudents || !report.attendAvg" block>Create Report</ion-button>
+    <ion-button size="small " (click)="this.router.navigateByUrl( '/lecture-dashboard')">Cancel</ion-button>
 
 </ion-content>

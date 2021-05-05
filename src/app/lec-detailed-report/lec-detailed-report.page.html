@@ -1,0 +1,72 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>lecDetailedReport</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="floating">Lecture:</ion-label>
+        <ion-input readonly>{{lecture}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Module:</ion-label>
+        <ion-input readonly>{{modules}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Department:</ion-label>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Date:</ion-label>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Number of Students:</ion-label>
+        <ion-input readonly>{{numStudents}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Week average Attendance:</ion-label>
+        <ion-input readonly>{{attendAvg}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Topic(s) covered</ion-label>
+        <ion-input readonly>{{topics}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Mode of Teaching Used</ion-label>
+        <ion-input readonly>{{teachMode}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked ">Mode of Presentation</ion-label>
+        <ion-input readonly>{{presentMode}}</ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked ">Resources Used</ion-label>
+        <ion-input readonly>{{resources}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked ">Activities</ion-label>
+        <ion-input readonly>{{activities}}</ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked">Assessments</ion-label>
+        <ion-input readonly>{{assess}}</ion-input>
+        <ion-input placeholder="Address Line 2"></ion-input>
+        <ion-input placeholder="City"></ion-input>
+        <ion-input placeholder="State"></ion-input>
+        <ion-input placeholder="Zip Code"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="stacked ">Challenge/Recommendations</ion-label>
+        <ion-input readonly>{{challRecomm}}</ion-input>
+    </ion-item>
+</ion-content>

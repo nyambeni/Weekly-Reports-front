@@ -1,28 +1,24 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>reports</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>reports</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card>
-  <ion-card-content>
-    <ion-item-divider>
-      <h3>Modules</h3>
-    </ion-item-divider>
-<<<<<<< HEAD
-
-    <ion-item *ngFor="let mod of modules" [routerLink]="['/lecturer-report']">{{mod.subjCode}}</ion-item>
-=======
-    <ul >
-      <ion-list *ngFor="let mod of modules">
-          <ion-button  (click)="getModule(mod.lecSubId)" >{{mod.subjCode}}</ion-button>
-      </ion-list>
-  </ul>
->>>>>>> 56cf240f7d9c1f83014bf14c24062fb3d9ee8c01
-  </ion-card-content>
-  </ion-card>
+    <ion-card>
+        <ion-card-content>
+            <ion-item-divider>
+                <h3>Modules</h3>
+            </ion-item-divider>
+            <ul>
+                <!--<ion-item *ngFor="let mod of modules">{{mod.subjCode}}</ion-item>-->
+                <ion-list *ngFor="let mod of modules">
+                    <ion-button (click)="getModule(mod.reportNum)">{{mod.subjCode}}</ion-button>
+                </ion-list>
+            </ul>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
