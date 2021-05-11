@@ -4,7 +4,7 @@ import { LoginService } from '../login.service';
 import { NavigationExtras, Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { NgForm, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+
 
 
 @Component({
@@ -33,67 +33,60 @@ export class LoginPage implements OnInit {
   };
 
   constructor(public navCtrl: NavController,
-    private router: Router,
-    private log: LoginService,
-    public loadingController: LoadingController,
-    public toastController: ToastController) { }
+              private router: Router,
+              private log: LoginService,
+              public loadingController: LoadingController,
+              public toastController: ToastController) { }
 
   ngOnInit() {
   }
 
   logForm() {
 
-    if (this.select.staffNo != '' && this.select.password != '') {
-      if (this.role === 'HOD') {
-        this.hod.headNum = this.select.staffNo;
-        this.hod.password = this.select.password;
+    if (this.role === 'HOD'){
+      this.hod.headNum = this.select.staffNo;
+      this.hod.password = this.select.password;
 
-        this.log.hodLogin(this.hod)
-          .subscribe(data => {
-            const dash: NavigationExtras = {
-              state: {
-                dash: data
-              }
-            };
-            console.log(dash);
-            this.navCtrl.navigateForward('/hod-dashboard', dash);
-          },
-            error => {
-              console.log('wrong credentials');
-              this.displayToast1();
-            });
+      this.log.hodLogin(this.hod)
+      .subscribe(data => {
+        const dash: NavigationExtras = {
+          state: {
+            dash: data
+          }
+        };
+        console.log(dash);
+        this.navCtrl.navigateForward('/hod-dashboard', dash);
+      },
+      error => {
+        console.log('wrong credentials');
+        this.displayToast();
+      });
 
-      } else if (this.role === 'LECTURER') {
-        this.lecture.lecNum = this.select.staffNo;
-        this.lecture.password = this.select.password;
-        console.log(this.lecture);
+    } else if (this.role === 'LECTURER') {
+      this.lecture.lecNum = this.select.staffNo;
+      this.lecture.password = this.select.password;
+      console.log(this.lecture);
 
-        this.log.lectureLogin(this.lecture)
-          .subscribe(data => {
-            console.log(data);
-            this.presentLoading();
-            this.navCtrl.navigateForward('/lecture-dashboard');
-            console.log('jj')
-            const dash: NavigationExtras = {
-              state: {
-                dash: data
-              }
-            };
-            console.log(dash);
-            this.presentLoading();
-            this.navCtrl.navigateForward('/lecture-dashboard', dash);
-           
-          },
-          error =>{
-            console.log('kkkkkkkk')
-            return this.displayToast1();
-          });
+      this.log.lectureLogin(this.lecture)
+      .subscribe(data => {
+        console.log(data);
+
+        const dash: NavigationExtras = {
+          state: {
+            dash: data
+          }
+        };
+        console.log(dash);
+        this.presentLoading();
+        this.navCtrl.navigateForward('/lecture-dashboard', dash);
+
       }
-    }
-
-    else{
-      this.displayToast();
-    }
+      ,
+      error => {
+        console.log('wrong credentials');
+        this.displayToast();
+      });
+}
   }
 
   async presentLoading() {
@@ -110,23 +103,13 @@ export class LoginPage implements OnInit {
 
   displayToast() {
     this.toastController.create({
-      message: 'Please insert Username and Password!',
+      message: 'Incorrect User ID or Password',
       position: 'top',
       cssClass: 'toast-custom-class',
       duration: 2000
     }).then((toast) => {
       toast.present();
-    });
-  }
-
-  displayToast1() {
-    this.toastController.create({
-      message: 'Invalid Username or Password!',
-      position: 'top',
-      cssClass: 'toast-custom-class',
-      duration: 2000
-    }).then((toast) => {
-      toast.present();
+      this.navCtrl.navigateBack('/login');
     });
   }
 

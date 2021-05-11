@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LectureService } from '../lecture.service';
+//import { LectureService } from '../lecture.service';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
-
+import { HodService } from '../hod.service';
 
 @Component({
   selector: 'app-detailed-report',
@@ -9,7 +9,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./detailed-report.page.scss'],
 })
 export class DetailedReportPage implements OnInit {
-  reportNumber;
+ /* reportNumber;
   report: any;
   numberOfStudents;
   averAttendance;
@@ -19,24 +19,30 @@ export class DetailedReportPage implements OnInit {
   resource;
   activities;
   assess;
-  challRecomm;
+  challRecomm;*/
 
+  reports: any = [];
+  reportId: any;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private lectureService: LectureService) {
-    this.route.queryParams.subscribe(params => {
+  constructor(private router: Router, private apiService: HodService,
+              /*private route: ActivatedRoute,
+              private lectureService: LectureService*/) {
+   /* this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.reportNumber = this.router.getCurrentNavigation().extras.state.detailed;
       }
-    });
+    });*/
+
+    this.reportId = "";
   }
 
   ngOnInit() {
-    this.displayReport();
+    this.reportId = this.router.getCurrentNavigation().extras.state; 
+    this.displayReport(this.reportId);
   }
 
-  displayReport(){
+  displayReport(reportId: any){
+    /*
     this.lectureService.getDetailedReport(this.reportNumber)
     .subscribe(data => {
       this.report = data;
@@ -49,7 +55,18 @@ export class DetailedReportPage implements OnInit {
       this.activities = this.report[0].activities;
       this.assess = this.report[0].assess;
       this.challRecomm = this.report[0].challRecomm;
-    });
+    });*/
+
+     this.apiService.getDetailedReport(reportId).subscribe(data => {
+      console.log(data.message);
+      console.log(data);
+      console.log(this.reports);
+      this.reports.push(data.data);
+    
+        
+      }, error => console.log(error));
   }
+
+  
 
 }

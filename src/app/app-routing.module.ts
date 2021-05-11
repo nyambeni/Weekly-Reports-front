@@ -55,7 +55,8 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./landing/landing.module').then( m => m.LandingPageModule)
-  },  {
+  },
+  {
     path: 'detailed-report',
     loadChildren: () => import('./detailed-report/detailed-report.module').then( m => m.DetailedReportPageModule)
   },
@@ -63,10 +64,10 @@ const routes: Routes = [
     path: 'lec-detailed-report',
     loadChildren: () => import('./lec-detailed-report/lec-detailed-report.module').then( m => m.LecDetailedReportPageModule)
   },
-
-
-
-
+  {
+    path: 'hod-view-module',
+    loadChildren: () => import('./hod-view-module/hod-view-module.module').then( m => m.HodViewModulePageModule)
+  },
 ];
 
 @NgModule({

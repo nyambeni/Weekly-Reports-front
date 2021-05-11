@@ -23,9 +23,6 @@ export class LecDetailedReportPage implements OnInit {
   challRecomm;
   numStudents;
   attendAvg;
-  date;
-  department;
-
   constructor(private router: Router, private lectureService: LectureService, private route: ActivatedRoute ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -43,8 +40,6 @@ export class LecDetailedReportPage implements OnInit {
         this.challRecomm = this.temp[0].challRecomm;
         this.numStudents = this.temp[0].numStudents;
         this.attendAvg = this.temp[0].attendAvg;
-        this.date = this.temp[0].date;
-        this.department = this.temp[0].deptName;
       }
     });
   }

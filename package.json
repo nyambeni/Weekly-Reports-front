@@ -23,6 +23,7 @@
     "@ionic-native/file": "^5.31.1",
     "@ionic-native/file-opener": "^5.31.1",
     "@ionic/angular": "^5.5.2",
+    "mysql": "^2.18.1",
     "pdfmake": "^0.1.70",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

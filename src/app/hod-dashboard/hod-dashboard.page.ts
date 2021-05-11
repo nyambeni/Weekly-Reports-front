@@ -16,8 +16,7 @@ export class HodDashboardPage implements OnInit {
   hodName;
   email;
   deptName;
-
-  contentLoaded = false;
+  modules: any[] = [];
 
 
   constructor(private hodService: HodService, private router: Router, private route: ActivatedRoute) {
@@ -34,22 +33,18 @@ export class HodDashboardPage implements OnInit {
         console.log('dept name', this.hodName);
         console.log('email', this.email);
         console.log('id', this.deptName);
-
-        this.hodService.hodDashMod(this.deptNum)
-        .subscribe(data => {
-          this.dashboard = data;
-          console.log('hod', this.dashboard);
-
-        },
-          error => {});
+          
+        this.hodService.getModules(this.deptNum).subscribe(data => {
+          this.modules = data;
+          console.log(this.modules);
+        }, error => console.log(error));
+        
       }
     });
-    setTimeout(() => {
-      this.contentLoaded = true;
-    }, 3000);
   }
 
   ngOnInit() {
+    
 
   }
 
@@ -73,5 +68,9 @@ export class HodDashboardPage implements OnInit {
     };
     console.log('move to detailed', detailed)
     this.router.navigate(['/detailed-report'],detailed)
+  }
+
+  viewModule(modelCode: any){
+	  this.router.navigateByUrl('/hod-view-module', {state:{module:modelCode, depId:this.deptNum}});
   }
 }

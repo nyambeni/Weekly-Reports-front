@@ -2,8 +2,15 @@
 ion-content.background
 {
 
-  --background:url(../../assets/images/OIP.jpg) 00/100 100 no-repeat;
+  --background:url(../../assets/images/OIP.jpg) no-repeat center top; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-color: black;
 
+
+ 
+  height: 100px;
 }
 
 
@@ -43,7 +50,7 @@ ion-content.background
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: px 2px;
+ // margin: 10px;
   cursor: pointer;
   position: absolute;
   left: auto;
@@ -57,7 +64,7 @@ ion-content.background
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
   overflow: hidden;
 }
 

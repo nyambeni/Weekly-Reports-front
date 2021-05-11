@@ -35,26 +35,17 @@ export class RegistrationPage implements OnInit {
 
   logForm() {
     console.log(this.select);
-    if(this.select.title != ''&&this.select.lecName!= ''
-    &&this.select.email!= ''
-    &&this.select. password!= ''
-    &&this.select.subjCode.length > 0 
-    &&this.select.lecNum!= ''){
-    /*this.register.registerLecture(this.select)
+    this.register.registerLecture(this.select)
     .subscribe(data => {
       data = this.select;
       console.log('===================================================');
       console.log(data);
+
       this.displayToast();
     },
-      error => {});*/
+      error => {});
 
   }
-  else{
-    this.displayToast1()
-
-  }
-}
 
   ngOnInit() {
     this.displayDepartment();
@@ -106,16 +97,4 @@ export class RegistrationPage implements OnInit {
     });
   }
 
-  displayToast1() {
-    this.toastController.create({
-      message: 'Fill in all fields!',
-      position: 'top',
-      cssClass: 'toast-custom-class',
-      duration: 2000
-    }).then((toast) => {
-      toast.present();
-    });
-  }
-
 }
-

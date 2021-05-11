@@ -1,36 +1,45 @@
 <ion-header>
-    <ion-toolbar color="primary">
-        <ion-title>hod-Report</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="hod-dashboard"></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+	  <ion-back-button></ion-back-button>
+	</ion-buttons>
+    <ion-title>Summary</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+	<ion-item lines="full">
+      <ion-label>Select Week</ion-label>
+      <ion-datetime [(ngModel)]="reportDate" min="2021" displayFormat="MM/DD/YYYY"></ion-datetime>
+	</ion-item>
+	<ion-button size="small" expand="full" (click)="search()"><ion-icon size="small" name="search"></ion-icon></ion-button>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="background">
-    <ion-card *ngFor="let h of hod">
-        <ion-card-header>
-            <ion-card-title class="text-center">{{h.subjCode}}</ion-card-title>
-            <ion-card-subtitle class="text-center">{{h.assess}}</ion-card-subtitle>
-        </ion-card-header>
-        <ion-card-content color="dark" class="background">
-            <ion-item-divider color="light">
-                <h3 class="text-center">Weekly Teachings</h3>
-            </ion-item-divider>
-            <ion-text>
-                <p>{{h.activities}}</p>
-            </ion-text>
-            <ion-item-divider color="light">
-                <h3 class="text-center">Challenges</h3>
-            </ion-item-divider>
-            <ion-text>
-                <p>{{h.challRecomm}}</p>
-            </ion-text>
-            <ion-item-divider color="light">
-                <ion-label size="small"><a href="../../assets/documents/report.pdf" download><small>{{h.reportDocument}}</small></a></ion-label>
-                <ion-icon name="download" size="small"></ion-icon>
-            </ion-item-divider>
-        </ion-card-content>
-    </ion-card>
+  <div *ngIf="reports?.length">
+  <ion-card *ngFor="let report of reports">
+   <ion-card-header>
+    <ion-label size="small"><h4 class="text-center">{{report.title}}&nbsp;{{report.lecName}}&nbsp;{{report.lecSurname}}</h4></ion-label> 
+    <ion-card-title class="text-center"><b>{{report.subjCode}}</b></ion-card-title>
+	<ion-card-subtitle class="text-center">{{report.assess}}</ion-card-subtitle>
+   </ion-card-header>
+   <ion-card-content  class="background">
+     
+	 <h3 class="text-center"><b>Weekly Teachings</b></h3>
+     <ion-text>
+	   <div class="styleContent">
+	   <p>{{report.topicsCovered}}</p>
+	   </div>
+	 </ion-text>
+	 <h3 class="text-center"><b>Challenges</b></h3>
+     <ion-text>
+	   <div class="styleContent">
+	   <p>{{report.challRecomm}}</p>
+	   </div>
+	 </ion-text>
+   </ion-card-content>
+  </ion-card>
+  </div>
+  <div *ngIf="!reports?.length">
+	   <h4 class="text-center">No reports found!</h4>
+  </div>
 </ion-content>

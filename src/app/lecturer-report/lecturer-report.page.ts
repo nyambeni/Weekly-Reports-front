@@ -92,7 +92,67 @@ export class LecturerReportPage implements OnInit {
   ngOnInit() {
   }
 
-  createReport() {;
+  createPdf() {
+
+    const docDefinition = {
+      content: [
+        { text: 'Lecturer report', style: 'header' },
+        { text: new Date().toTimeString(), alignment: 'right' },
+
+        { text: 'Name', style: 'subheader' },
+        this.Myname,
+
+        { text: 'Module', style: 'subheader' },
+        this.module,
+
+        { text: 'Department', style: 'subheader' },
+        this.department,
+
+        { text: 'Number of Students:', style: 'subheader' },
+        this.report.numStudents,
+
+        { text: 'Week average Attendance', style: 'subheader' },
+        this.report.attendAvg,
+
+        { text: 'Topic(s) covered', style: 'subheader' },
+        this.report.topicsCovered,
+
+        { text: 'Mode of Teaching Used', style: 'subheader' },
+        this.teachModes,
+
+        { text: 'Mode of Presentation', style: 'subheader' },
+        this.report.presentMode,
+
+        { text: 'Resources Used', style: 'subheader' },
+        this.report.resource,
+
+        { text: 'Activities', style: 'subheader' },
+        this.report.activities,
+
+        { text: 'Assessments', style: 'subheader' },
+        this.report.assess,
+
+        { text: 'Challenges/Recommendations', style: 'subheader' },
+        this.report.challRecomm,
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+        },
+        subheader: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 15, 0, 0]
+        },
+        story: {
+          italic: true,
+          alignment: 'center',
+          width: '50%'
+        }
+      }
+    };
+    this.pdfObj = pdfMake.createPdf(docDefinition);
 
     this.report.lecSubId = Number(this.lecSubId);
     for (let k = 0; k < this.teachModes.length; k++){
@@ -104,6 +164,14 @@ export class LecturerReportPage implements OnInit {
     this.lectureService.createReport(this.report)
    .subscribe(data => {this.myMessage = 'Report is set Successfully'; },
      error => {this.myMessage = 'Failed to create Report, CODE: DP'; });
+  }
+
+  downloadPdf() {
+    if (this.plt.is('cordova')) {
+
+    } else {
+      this.pdfObj.download();
+    }
   }
 
   showPrompt() {
@@ -120,7 +188,7 @@ export class LecturerReportPage implements OnInit {
         {
           text: 'Yes',
           handler: (data: any) => {
-            this.createReport();
+            this.createPdf();
             console.log('Saved Information', data);
             this.displayToast();
           }

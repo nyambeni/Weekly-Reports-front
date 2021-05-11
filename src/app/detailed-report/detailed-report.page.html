@@ -1,76 +1,49 @@
 <ion-header>
     <ion-toolbar color="primary">
-        <ion-title>detailed Report</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Details</ion-title>
     </ion-toolbar>
-    <ion-item>
-        <a [routerLink]="['/hod-dashboard']" class="view" (click)="reports()">My Reports</a>
-    </ion-item>
-</ion-header>
-
-<ion-content color="light">
-    <ion-card color="light">
-        <ion-card-content>
-            <ion-item>
-                <ion-label position="stacked">Lecture:</ion-label>
-                <ion-input readonly></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Module:</ion-label>
-                <ion-input readonly></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Department:</ion-label>
-                <ion-input readonly></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked">Date:</ion-label>
-                <ion-input readonly></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked">Number of Students:</ion-label>
-                <ion-input readonly>{{numberOfStudents}}</ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked">Week average Attendance:</ion-label>
-                <ion-input readonly>{{averAttendance}}</ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked">Topic(s) covered</ion-label>
-                <ion-input readonly>{{topicsCovered}}</ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Mode of Teaching Used</ion-label>
-                <ion-input readonly>{{teachMode}}</ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked ">Mode of Presentation</ion-label>
-                <ion-input readonly>{{presentMode}}</ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked ">Resources Used</ion-label>
-                <ion-input readonly>{{resource}}</ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked ">Activities</ion-label>
-                <ion-input readonly>{{activities}}</ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked">Assessments</ion-label>
-                <ion-input readonly>{{assess}}</ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="stacked ">Challenge/Recommendations</ion-label>
-                <ion-input readonly>{{challRecomm}}</ion-input>
-            </ion-item>
-
-        </ion-card-content>
+  </ion-header>
+  
+  <ion-content class="background">
+    <ion-card *ngFor="let report of reports">
+     
+     <ion-card-header>
+      <ion-card-title class="text-center"><b>{{report.subjCode}}</b></ion-card-title>
+      <ion-label size="small"><h4 class="text-center"><b>Department:</b> Informatics</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Lecturer:</b> {{report.title}}&nbsp;{{report.lecName}}&nbsp;{{report.lecSurname}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Date:</b> {{report.date | date:'M/d/y'}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Number of Students:</b> {{report.numStudents}}</h4></ion-label>
+      <ion-label size="small"><h4 class="text-center"><b>Week avarage attendance:</b> {{report.attendAvg}}</h4></ion-label>
+     </ion-card-header>
+     <ion-card-content  class="background">
+       <h3 class="text-center"><b>Weekly Assessment</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.assess}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Weekly Teachings</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.topicsCovered}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Challenges</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.challRecomm}}</p>
+         </div>
+       </ion-text>
+       <h3 class="text-center"><b>Channel(s) used</b></h3>
+       <ion-text>
+         <div class="styleContent">
+         <p>{{report.presentMode}}</p>
+         </div>
+       </ion-text>
+       </ion-card-content>
     </ion-card>
-
-</ion-content>
+  </ion-content>
+  

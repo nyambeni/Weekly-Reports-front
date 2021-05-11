@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { LectureService } from '../lecture.service';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -21,7 +22,6 @@ export class LectureDashboardPage implements OnInit {
   lectureName;
   lecturId;
   Assess;
-  myrepo: any
 
   constructor(private router: Router,
               private lectureService: LectureService,
@@ -37,7 +37,7 @@ export class LectureDashboardPage implements OnInit {
       }
     });
 
-    setTimeout(() => {
+    setTimeout(()=>{
       this.contentLoaded = true;
     }, 3000);
 
@@ -52,7 +52,6 @@ export class LectureDashboardPage implements OnInit {
     this.lectureService.getSubjects(this.lecturId)
       .subscribe(data => {
       this.lectureInfo = data;
-      this.myrepo = data
       this.departmentName = this.lectureInfo[0].deptName;
       this.lectureName = this.lectureInfo[0].title + ' ' + this.lectureInfo[0].lecName + ' ' + this.lectureInfo[0].lecSurname;
       this.email = this.lectureInfo[0].email;
@@ -82,10 +81,38 @@ export class LectureDashboardPage implements OnInit {
     console.log(this.lecturId);
     const myReports: NavigationExtras = {
       state: {
-        myReports: this.myrepo
+        myReports: this.lecturId
       }
     };
     console.log('move to reports', myReports);
     this.router.navigate(['/reports'], myReports);
   }
+
+  async showAlert() {
+    await this.alertCtrl.create({
+      header: 'Assessment Info',
+      inputs: [
+        {type: 'text', name: 'assessment', placeholder: 'Assessment'},
+        {type: 'number', name: 'attempts', placeholder: 'Attempts'},
+        {type: 'number', name: 'submitted', placeholder: 'Submitted'}
+      ],
+      buttons: [
+        {text: 'Apply', handler: (res) => {
+          // console.log()this.Assess = res.assessment;
+          console.log(res.assessment);
+          console.log(res.attempts);
+          console.log(res.submitted);
+        }
+      },
+      {
+        text: 'Cancel'
+      }
+      ]
+    }).then(res => res.present());
+  }
+
+  /*logForm() {
+    this.showAlert();
+    console.log(this.Assess);
+  }*/
 }
