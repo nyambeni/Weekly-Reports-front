@@ -1,44 +1,47 @@
 <ion-header>
-    <ion-toolbar color ="primary">
-        <ion-title>login</ion-title>
+    <ion-toolbar color="primary">
+        <ion-title>Login</ion-title>
         <ion-buttons slot="start">
-            <ion-back-button defaultHref=""></ion-back-button>
+            <ion-back-button defaultHref="/landing"></ion-back-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
 
 <ion-content style="text-align: center;">
-    <div *ngIf="contentLoaded">
-        <form (ngSubmit)="logForm()">
-            <ion-list>
-
-                <ion-item>
-                    <ion-label position="floating ">Role</ion-label>
-                    <ion-select #newSelect [(ngModel)]="role" name="role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
-                        <ion-select-option value="HOD" checked="true">HOD</ion-select-option>
-                        <ion-select-option value="LECTURER">Lecturer</ion-select-option>
-                    </ion-select>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label position="floating ">Username</ion-label>
-                    <ion-input type="staffNo" [(ngModel)]="select.staffNo" name="select.email"></ion-input>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label position="floating ">Password</ion-label>
-                    <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
-                </ion-item>
-
+    <ion-card>
+        <div *ngIf="contentLoaded">
+            <form (ngSubmit)="logForm()">
+                <ion-list>
+    
+                    <ion-item>
+                        <ion-label position="floating ">Role</ion-label>
+                        <ion-select #newSelect [(ngModel)]="role" name="role" [ngModelOptions]="{standalone: true}" interface="action-sheet">
+                            <ion-select-option value="HOD" checked="true">HOD</ion-select-option>
+                            <ion-select-option value="LECTURER">Lecturer</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+    
+                    <ion-item>
+                        <ion-label position="floating ">Username</ion-label>
+                        <ion-input minlength="9" maxlength="9" type="staffNo" [(ngModel)]="select.staffNo" name="select.email"></ion-input>
+                    </ion-item>
+    
+                    <ion-item>
+                        <ion-label position="floating ">Password</ion-label>
+                        <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
+                    </ion-item><br><br><br><br><br><br><br><br>
+    
+                </ion-list>
                 <div padding>
-                    <ion-button size="small" shape="round" type="submit" block>Login</ion-button>
-                </div>
+                    <ion-button shape="round" type="submit" block>Login</ion-button>
+                </div><br>
+                
                 <a size="small" [routerLink]="['/registration']">CREATE ACCOUNT</a>
-
-            </ion-list>
-        </form>
-    </div>
+            </form>
+        </div>
+    </ion-card>
+    
     <div *ngIf="!contentLoaded">
         <form (ngSubmit)="logForm()">
             <ion-list>

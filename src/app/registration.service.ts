@@ -10,16 +10,16 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   registerLecture(body: any){
-    return this.http.post('http://localhost:4041/register/lecture', body, {
+    return this.http.post('http://168.172.190.54:4041/register/lecture', body, {
       observe: 'body'
     });
   }
 
   getModules(id){
-    return this.http.get('http://localhost:4041/register/deptModules/' + id);
+    return this.http.get('http://168.172.190.54:4041/register/deptModules/' + id);
   }
 
   getDepartments(){
-    return this.http.get('http://localhost:4041/register/department');
+    return this.http.get('http://168.172.190.54:4041/register/department');
   }
 }

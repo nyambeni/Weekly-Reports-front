@@ -1,75 +1,75 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>registration</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref=""></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
-
-<ion-content style="text-align: center;">
-
-    <!---->
-    <form (ngSubmit)="logForm()">
-
-        <ion-item>
-            <ion-label position="floating ">Title</ion-label>
-            <ion-select #newSelect [(ngModel)]="select.title" name="select.title" [ngModelOptions]="{standalone: true}" interface="action-sheet">
-                <ion-select-option value="Mr">Mr</ion-select-option>
-                <ion-select-option value="Mrs">Mrs</ion-select-option>
-                <ion-select-option value="MISS">MISS</ion-select-option>
-            </ion-select>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Lecturer Number</ion-label>
-            <ion-input type="text" [(ngModel)]="select.lecNum" name="select.lecNum"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Select Department</ion-label>
-            <ion-select [ngModel]="department" multiple="false" interface="action-sheet" (ngModelChange)="onDropdownChange($event)" class="form-control" id="department" name="department">
-                <ion-select-option *ngFor="let dep of department" [value]="dep.depCode">
-                    {{dep.deptName}}
-                </ion-select-option>
-            </ion-select>
-        </ion-item>
-
-
-        <ion-item>
-            <ion-label position="floating ">Name</ion-label>
-            <ion-input type="text" [(ngModel)]="select.lecName" name="select.lecName"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Surname</ion-label>
-            <ion-input type="text" [(ngModel)]="select.lecSurname" name="select.lecSurname"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Email</ion-label>
-            <ion-input type="email" [(ngModel)]="select.email" name="select.email"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Password</ion-label>
-            <ion-input type="password" [(ngModel)]="select.password" name="select.password"></ion-input>
-        </ion-item>
-
-        <ion-item>
-            <ion-label position="floating ">Modules</ion-label>
-            <ion-select [ngModel]="selectModules" multiple="true" (ngModelChange)="selectModules($event)" class="form-control" id="modules" name="modules">
-                <ion-select-option *ngFor="let mod of modules" [value]="mod.subjCode">
-                    {{mod.subjName}}
-                </ion-select-option>
-            </ion-select>
-        </ion-item>
-
-        <ion-item no-lines no-padding class="custom-checkbox">
-            <ion-label>I agree <a>Terms and Conditions</a></ion-label>
-            <ion-checkbox name="terms" [(ngModel)]="terms" checked="false" required></ion-checkbox>
-        </ion-item>
-
-        <ion-button size="small" shape="round" type="submit" [disabled]="!terms" block>create Account</ion-button>
-    </form>
-</ion-content>
+    <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <ion-toolbar color="primary">
+            <ion-title>Registration</ion-title>
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref=""></ion-back-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    
+    <ion-content style="text-align: center;">
+        <form (ngSubmit)="logForm()" name="myForm">
+    
+            <ion-item>
+                <ion-label position="floating ">Title</ion-label>
+                <ion-select #newSelect [(ngModel)]="select.title" name="select.title" [ngModelOptions]="{standalone: true}" interface="action-sheet" required>
+                    <ion-select-option value="Mr">Mr</ion-select-option>
+                    <ion-select-option value="Mrs">Mrs</ion-select-option>
+                    <ion-select-option value="MISS">MISS</ion-select-option>
+                </ion-select>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating ">Lecturer Number</ion-label>
+                <ion-input type="text" [(ngModel)]="select.lecNum" name="select.lecNum" maxlength="8" required></ion-input>
+               
+            </ion-item>
+     <span ng-show ="myForm.select.lecNum.$touched && myForm.select.lecNum.$invalid">required</span>
+            <ion-item>
+                <ion-label position="floating ">Select Department</ion-label>
+                <ion-select [ngModel]="department" multiple="false" interface="action-sheet" (ngModelChange)="onDropdownChange($event)" class="form-control" id="department" name="department" required>
+                    <ion-select-option *ngFor="let dep of department" [value]="dep.depCode">
+                        {{dep.deptName}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+    
+    
+            <ion-item>
+                <ion-label position="floating ">Name</ion-label>
+                <ion-input type="text" [(ngModel)]="select.lecName" name="select.lecName" pattern="[a-z]{1,5}" title="it contain upercase" required></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating ">Surname</ion-label>
+                <ion-input type="text" [(ngModel)]="select.lecSurname" name="select.lecSurname" required></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating ">Email</ion-label>
+                <ion-input type="email" [(ngModel)]="select.email" name="select.email" required></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating " for ="psw">Password</ion-label>
+                <ion-input type="password" id ="psw" [(ngModel)]="select.password" name="select.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="must contain at least a one number and one  uppercase and one lowercase, and at leaast 8 or more charecters" required></ion-input>
+            </ion-item>
+    
+            <ion-item>
+                <ion-label position="floating ">Modules</ion-label>
+                <ion-select [ngModel]="selectModules" multiple="true" (ngModelChange)="selectModules($event)" class="form-control" id="modules" name="modules" required>
+                    <ion-select-option *ngFor="let mod of modules" [value]="mod.subjCode">
+                        {{mod.subjName}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+    
+            <ion-item no-lines no-padding class="custom-checkbox">
+                <ion-label>I agree <a>Terms and Conditions</a></ion-label>
+                <ion-checkbox name="terms" [(ngModel)]="terms" checked="false" required></ion-checkbox>
+            </ion-item>
+    
+            <ion-button expand="block" shape="round" type="submit" [disabled]="!terms" block>create Account</ion-button>
+        </form>
+    </ion-content>

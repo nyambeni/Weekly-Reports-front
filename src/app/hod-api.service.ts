@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HodApiService {
 
-  private baseUrl = 'http://localhost:4041/hod';  
+  private baseUrl = 'http://168.172.190.54:4041/hod';  
 
    constructor(private http: HttpClient) { }
   

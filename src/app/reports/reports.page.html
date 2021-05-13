@@ -1,6 +1,6 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>reports</ion-title>
+    <ion-toolbar color="primary">
+        <ion-title>Reports</ion-title>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
         </ion-buttons>
@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
+    <ion-card class=".card1">
         <ion-card-content>
             <ion-item-divider>
                 <h3>Modules</h3>
@@ -16,7 +16,7 @@
             <ul>
                 <!--<ion-item *ngFor="let mod of modules">{{mod.subjCode}}</ion-item>-->
                 <ion-list *ngFor="let mod of modules">
-                    <ion-button (click)="getModule(mod.reportNum)">{{mod.subjCode}}</ion-button>
+                    <ion-button color="light" (click)="getModule(mod.reportNum)">{{mod.subjCode}}</ion-button>
                 </ion-list>
             </ul>
         </ion-card-content>

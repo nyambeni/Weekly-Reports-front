@@ -1,15 +1,15 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-title>lecDetailedReport</ion-title>
-        <ion-buttons slot="start">
-            <ion-back-button defaultHref="lecture-dashboard"></ion-back-button>
-        </ion-buttons>
+    <ion-toolbar color="primary">
+        <ion-title>Detailed Report</ion-title>
     </ion-toolbar>
+    <ion-item>
+        <a [routerLink]="['/reports']">My Reports</a>
+    </ion-item>
 </ion-header>
 
 <ion-content>
     <ion-item>
-        <ion-label position="floating">Lecture:</ion-label>
+        <ion-label position="stacked">Lecture:</ion-label>
         <ion-input readonly>{{lecture}}</ion-input>
     </ion-item>
     <ion-item>
@@ -17,11 +17,13 @@
         <ion-input readonly>{{modules}}</ion-input>
     </ion-item>
     <ion-item>
-        <ion-label position="floating">Department:</ion-label>
+        <ion-label position="stacked">Department:</ion-label>
+        <ion-input readonly>{{department}}</ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label position="floating">Date:</ion-label>
+        <ion-label position="stacked">Date:</ion-label>
+        <ion-input readonly>{{date}}</ion-input>
     </ion-item>
 
     <ion-item>
@@ -59,10 +61,6 @@
     <ion-item>
         <ion-label position="stacked">Assessments</ion-label>
         <ion-input readonly>{{assess}}</ion-input>
-        <ion-input placeholder="Address Line 2"></ion-input>
-        <ion-input placeholder="City"></ion-input>
-        <ion-input placeholder="State"></ion-input>
-        <ion-input placeholder="Zip Code"></ion-input>
     </ion-item>
 
     <ion-item>
