@@ -85,8 +85,10 @@ export class LoginPage implements OnInit {
       error => {
         console.log('wrong credentials');
         this.displayToast();
+	this.navCtrl.navigateForward('/login')
       });
 }
+
   }
 
   async presentLoading() {

@@ -1,5 +1,6 @@
 <ion-header>
-    <script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+    
         <ion-toolbar color="primary">
             <ion-title>Registration</ion-title>
             <ion-buttons slot="start">
@@ -9,7 +10,7 @@
     </ion-header>
     
     <ion-content style="text-align: center;">
-        <form (ngSubmit)="logForm()" name="myForm">
+        <form (ngSubmit)="logForm()" >
     
             <ion-item>
                 <ion-label position="floating ">Title</ion-label>
@@ -22,10 +23,18 @@
     
             <ion-item>
                 <ion-label position="floating ">Lecturer Number</ion-label>
-                <ion-input type="text" [(ngModel)]="select.lecNum" name="select.lecNum" maxlength="8" required></ion-input>
-               
+                <ion-input type="text" [(ngModel)]="select.lecNum" required minlength="4" name="select.lecNum" #lecNum="ngModel"></ion-input>
+                <div *ngIf="lecNum.invalid && (lecNum.dirty || lecNum.touched)"
+                class="alert">
+            
+                        <div *ngIf="lecNum.errors.required">
+                            Lecturer no required.
+                        </div>
+                        <div *ngIf="lecNum.errors.minlength">
+                            Name must be at least 4 characters long.
+                        </div>
+                    </div>
             </ion-item>
-     <span ng-show ="myForm.select.lecNum.$touched && myForm.select.lecNum.$invalid">required</span>
             <ion-item>
                 <ion-label position="floating ">Select Department</ion-label>
                 <ion-select [ngModel]="department" multiple="false" interface="action-sheet" (ngModelChange)="onDropdownChange($event)" class="form-control" id="department" name="department" required>
@@ -38,22 +47,57 @@
     
             <ion-item>
                 <ion-label position="floating ">Name</ion-label>
-                <ion-input type="text" [(ngModel)]="select.lecName" name="select.lecName" pattern="[a-z]{1,5}" title="it contain upercase" required></ion-input>
+                <ion-input type="text" [(ngModel)]="select.lecName"  required name="select.lecName" #lecName="ngModel" ></ion-input>
+                 <div *ngIf="lecName.invalid && (lecName.dirty || lecName.touched)"
+                class="alert">
+            
+                         <div *ngIf="lecName.errors.required">
+                            Name is required.
+                        </div>
+                    </div>
             </ion-item>
     
             <ion-item>
                 <ion-label position="floating ">Surname</ion-label>
-                <ion-input type="text" [(ngModel)]="select.lecSurname" name="select.lecSurname" required></ion-input>
+                <ion-input type="text" [(ngModel)]="select.lecSurname"  required name="select.lecSurname" #lecSurname="ngModel" ></ion-input>
+                <div *ngIf="lecSurname.invalid && (lecSurname.dirty || lecSurname.touched)"
+                class="alert">
+            
+                         <div *ngIf="lecSurname.errors.required">
+                            surname is required.
+                        </div>
+                    </div>
             </ion-item>
     
             <ion-item>
                 <ion-label position="floating ">Email</ion-label>
-                <ion-input type="email" [(ngModel)]="select.email" name="select.email" required></ion-input>
+                <ion-input type="email" [(ngModel)]="select.email" ngModel email="true" required   #email="ngModel" name="select.email" ></ion-input>
+                <div *ngIf="email.invalid && (email.dirty || email.touched) "
+            class="alert" >
+
+              <div *ngIf="email.errors.required">
+                email is required.
+            </div>
+            <div *ngIf="email.errors.pattern">
+               Must be @tut.ac.za
+            </div>
+            </div>
+
             </ion-item>
     
             <ion-item>
                 <ion-label position="floating " for ="psw">Password</ion-label>
-                <ion-input type="password" id ="psw" [(ngModel)]="select.password" name="select.password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8}" title="must contain at least a one number and one  uppercase and one lowercase, and at leaast 8 or more charecters" required></ion-input>
+                <ion-input type="password"  [(ngModel)]="select.password" name="select.password"  #password="ngModel" required  ></ion-input>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                class="alert" >
+    
+                  <div *ngIf="password.errors.required">
+                    password is required.
+                </div>
+                <div *ngIf="password.errors.pattern">
+                    must contain at least a one number and one  uppercase and one lowercase, and at leaast 8 or more charecters
+                </div>
+                </div>
             </ion-item>
     
             <ion-item>
@@ -72,4 +116,9 @@
     
             <ion-button expand="block" shape="round" type="submit" [disabled]="!terms" block>create Account</ion-button>
         </form>
+        <script>
+            angular.module("myApp", [])
+                .controller('myController', ['$scope', function ($scope) {
+                } ]);
+        </script>
     </ion-content>

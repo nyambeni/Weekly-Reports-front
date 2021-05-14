@@ -42,7 +42,7 @@ ion-content.background
   text-decoration: none;
 }
 .button {
-  background-color: blue; 
+  background-color: gray; 
   border: none;
   color: white;
  padding:10px;
@@ -139,4 +139,28 @@ ion-content.background
       border-radius: 50%;
   }
 
+}
+
+
+
+.pgs1 {
+  color: white;
+  font-family: 'Droid serif', serif;
+  position: absolute;
+  left: 29%;
+  top: 40%;
+}
+
+.pgs2 {
+  color: white;
+  font-family: 'Droid serif', serif;
+  position: absolute;
+  left: 20%;
+  top: 45%;
+}
+
+.img1 {
+    position: absolute;
+    left: 35.45%;
+    bottom: 22%;
 }
