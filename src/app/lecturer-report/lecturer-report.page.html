@@ -73,18 +73,6 @@
         <ion-textarea type="text " [(ngModel)]="report.assess" name="assess "></ion-textarea>
     </ion-item>
 
-    <form #assForm="ngForm">
-        <ion-item>
-            <ion-label position="stacked">Assessments</ion-label>
-            <ion-input [(ngModel)]="form2.assesses" name="assesses" placeholder="Assessment"></ion-input>
-            <ion-input [(ngModel)]="form2.numStud" name="numStud" placeholder="Number of Students wrote"></ion-input>
-            <ion-input [(ngModel)]="form2.studSub" name="studSub" placeholder="Number of Students submitted"></ion-input>
-            <ion-input [(ngModel)]="form2.numAtt" name="numAtt" placeholder="Number of attempts"></ion-input>
-            <ion-button size="small " type="ngSubmit" (click)="sub()">Submit</ion-button>
-        </ion-item>
-
-    </form>
-
     <ion-item>
         <ion-label position="floating ">Challenge/Recommendations</ion-label>
         <ion-textarea type="text " [(ngModel)]="report.challRecomm" name="challRecomm "></ion-textarea>
